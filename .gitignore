@@ -1,0 +1,13 @@
+# Vercel
+.vercel/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+
+# Design reference (downloaded from Claude design — kept locally, not deployed)
+Game Gov/

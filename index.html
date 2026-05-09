@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Governance Challenge — A Boardroom Simulation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0b0b0b;
+    --ink-2: #1a1917;
+    --ink-3: #2a2925;
+    --paper: #f6f4ef;
+    --paper-2: #ecebe5;
+    --rule: #d9d6cd;
+    --silver: #b6b2a8;
+    --silver-2: #8a877f;
+    --warning: #8a2a1f;
+    --positive: #2a4a3a;
+    --serif: "Cormorant Garamond", "Times New Roman", serif;
+    --sans: "Manrope", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    min-height: 100%;
+    background: var(--ink);
+  }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* On desktop the game fills the viewport like a magazine spread.
+     On mobile we let it scroll naturally. */
+  #root { width: 100%; min-height: 100vh; }
+  @media (min-width: 1024px) {
+    body { overflow: hidden; }
+    #root { height: 100vh; }
+  }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; padding: 0; }
+  button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  ::selection { background: var(--ink); color: var(--paper); }
+
+  /* Subtle paper texture via grain pseudo-layer */
+  .grain::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(rgba(0,0,0,0.025) 1px, transparent 1px),
+      radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 2px;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    opacity: 0.65;
+  }
+
+  /* Fade & slide animations */
+  .fade-in { animation: fadeIn 520ms cubic-bezier(.2,.7,.2,1) both; }
+  .slide-up { animation: slideUp 620ms cubic-bezier(.2,.7,.2,1) both; }
+  .pop-in { animation: popIn 420ms cubic-bezier(.2,.9,.3,1.1) both; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes popIn { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
+
+  /* Spinning roulette */
+  .roulette { transition: transform 4.6s cubic-bezier(.12,.8,.2,1); }
+
+  /* Drop cap helper */
+  .dropcap::first-letter {
+    font-family: var(--serif);
+    font-size: 5em;
+    line-height: 0.85;
+    font-weight: 500;
+    float: left;
+    padding-right: 0.18em;
+    padding-top: 0.06em;
+    color: var(--ink);
+  }
+
+  /* Custom scrollbar (where scrolling is enabled) */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--paper); }
+  ::-webkit-scrollbar-thumb { background: var(--silver); border-radius: 0; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--silver-2); }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="app.jsx"></script>
+</body>
+</html>
