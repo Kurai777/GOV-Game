@@ -989,20 +989,36 @@ const Auth = {
   clear() { try { localStorage.removeItem(SESSION_KEY); } catch (e) {} },
   async register({ username, password, full_name, course }) {
     if (!SB) return { error: "config_missing" };
-    const { data, error } = await SB.rpc("register_user", {
-      p_username: username, p_password: password,
-      p_full_name: full_name, p_course: course,
-    });
-    if (error) return { error: "network" };
-    if (data && data.error) return { error: data.error };
-    return { ok: true, session: data };
+    try {
+      const { data, error } = await SB.rpc("register_user", {
+        p_username: username, p_password: password,
+        p_full_name: full_name, p_course: course,
+      });
+      if (error) {
+        console.error("[register_user] supabase error:", error);
+        return { error: "network", details: `${error.code || ""} ${error.message || error}`.trim() };
+      }
+      if (data && data.error) return { error: data.error };
+      return { ok: true, session: data };
+    } catch (e) {
+      console.error("[register_user] exception:", e);
+      return { error: "network", details: String(e && e.message || e) };
+    }
   },
   async login({ username, password }) {
     if (!SB) return { error: "config_missing" };
-    const { data, error } = await SB.rpc("login_user", { p_username: username, p_password: password });
-    if (error) return { error: "network" };
-    if (data && data.error) return { error: data.error };
-    return { ok: true, session: data };
+    try {
+      const { data, error } = await SB.rpc("login_user", { p_username: username, p_password: password });
+      if (error) {
+        console.error("[login_user] supabase error:", error);
+        return { error: "network", details: `${error.code || ""} ${error.message || error}`.trim() };
+      }
+      if (data && data.error) return { error: data.error };
+      return { ok: true, session: data };
+    } catch (e) {
+      console.error("[login_user] exception:", e);
+      return { error: "network", details: String(e && e.message || e) };
+    }
   },
   async logout(token) {
     if (!SB || !token) return;
@@ -2601,12 +2617,13 @@ function AuthModal({ onClose, onSuccess, lang, isMobile }) {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState(null);
 
+  const [errDetails, setErrDetails] = useState(null);
   const errorText = err ? t(`auth.err.${err}`, lang) : null;
 
   const submit = async (e) => {
     e && e.preventDefault();
     if (busy) return;
-    setErr(null);
+    setErr(null); setErrDetails(null);
 
     if (tab === "register") {
       if (!fullName.trim() || !course.trim() || !username.trim() || !password) {
@@ -2622,7 +2639,7 @@ function AuthModal({ onClose, onSuccess, lang, isMobile }) {
       : await Auth.login({ username: username.trim(), password });
     setBusy(false);
 
-    if (res.error) { setErr(res.error); return; }
+    if (res.error) { setErr(res.error); setErrDetails(res.details || null); return; }
     Auth.save(res.session);
     onSuccess(res.session);
   };
@@ -2739,7 +2756,12 @@ function AuthModal({ onClose, onSuccess, lang, isMobile }) {
             fontFamily: "var(--sans)",
             fontSize: 12, lineHeight: 1.4,
           }}>
-            {errorText}
+            <div>{errorText}</div>
+            {errDetails && (
+              <div style={{ marginTop: 6, fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 0.5, opacity: 0.85, wordBreak: "break-all" }}>
+                {errDetails}
+              </div>
+            )}
           </div>
         )}
 
