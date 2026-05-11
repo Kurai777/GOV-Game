@@ -292,6 +292,41 @@ const STRINGS = {
   "save.saved":               { en: "Recorded in the registry.",               pt: "Registrado no livro." },
   "save.error":               { en: "Save failed. Score kept locally.",        pt: "Falha ao salvar. Pontuação mantida localmente." },
   "save.notConfigured":       { en: "Backend not configured — score not recorded.", pt: "Backend não configurado — pontuação não registrada." },
+
+  // ── TOUR ──
+  "tour.next":             { en: "Next →",          pt: "Próximo →" },
+  "tour.prev":             { en: "Back",            pt: "Voltar" },
+  "tour.skip":             { en: "Skip tour",       pt: "Pular tutorial" },
+  "tour.done":             { en: "Take a seat →",   pt: "Tomar assento →" },
+  "tour.reopen":           { en: "▶ Tutorial",      pt: "▶ Tutorial" },
+
+  "tour.solo.title":       { en: "Solo Briefing",                                pt: "Sessão Individual" },
+  "tour.solo.body":        { en: "Eight governance questions from real boardroom cases — Enron, Sarbanes-Oxley, IBGC, Novo Mercado. Answer each, watch your telemetry react, earn influence.",
+                             pt: "Oito questões de governança baseadas em casos reais — Enron, Sarbanes-Oxley, IBGC, Novo Mercado. Responda cada uma, veja a telemetria reagir, acumule pontos de influência." },
+
+  "tour.multi.title":      { en: "Live Boardroom",                               pt: "Conselho ao Vivo" },
+  "tour.multi.body":       { en: "Multiplayer table for up to eight directors. Speak, vote, defend in real time. In development — opens on the first cohort.",
+                             pt: "Mesa multijogador para até oito conselheiros. Fale, vote, defenda em tempo real. Em desenvolvimento — abre na primeira turma." },
+
+  "tour.esg.title":        { en: "ESG Challenge",                                pt: "Desafio ESG" },
+  "tour.esg.body":         { en: "A whole fiscal year of sustainability-weighted decisions. Same questions as Solo Briefing, but with ESG and Transparency pillars carrying double weight on your score.",
+                             pt: "Um ano fiscal inteiro de decisões com peso de sustentabilidade. Mesmas questões da Sessão Individual, mas com os pilares de ESG e Transparência valendo o dobro na nota." },
+
+  "tour.crisis.title":     { en: "Board Crisis",                                 pt: "Crise no Conselho" },
+  "tour.crisis.body":      { en: "Time-bound scenarios under pressure — the Whistleblower, the Americanas inconsistency, greenwashing, related-party deals. Read the dossier, pick α, β, γ, or δ. The market reacts.",
+                             pt: "Cenários com prazo, sob pressão — o Denunciante, a inconsistência Americanas, greenwashing, partes relacionadas. Leia o dossiê, escolha α, β, γ ou δ. O mercado reage." },
+
+  "tour.leader.title":     { en: "The Directors' Table",                        pt: "A Mesa dos Conselheiros" },
+  "tour.leader.body":      { en: "Your best composite score across all sessions, ranked against the cohort. Saved automatically after every completed game.",
+                             pt: "Sua melhor pontuação composta entre todas as sessões, ranqueada contra a turma. Salvo automaticamente ao final de cada partida." },
+
+  "tour.profile.title":    { en: "Director Profile",                             pt: "Dossiê do Conselheiro" },
+  "tour.profile.body":     { en: "Your dossier — pillar mastery, decision history, certification progress. Coming soon. For now, opens your latest session results.",
+                             pt: "Seu dossiê — domínio dos pilares, histórico de decisões, progresso de certificação. Em breve. Por enquanto, abre os resultados da última sessão." },
+
+  "tour.takeover.title":   { en: "Hostile Takeover",                             pt: "Aquisição Hostil" },
+  "tour.takeover.body":    { en: "Earn influence points by answering correctly and choosing prudent moves. Spend two to spin the wheel — a random external crisis hits your scores. High-risk, high-flavor.",
+                             pt: "Ganhe pontos de influência respondendo certo e escolhendo lances prudentes. Gaste dois para girar a roleta — uma crise externa aleatória atinge suas notas. Alto risco, alto sabor." },
 };
 
 const t = (key, lang, vars) => {
@@ -1478,7 +1513,28 @@ function Landing({ go, isMobile, lang, setLang, session, onLogin, onLogout }) {
 // MENU
 // ============================================================
 
+const TOUR_FLAG_KEY = "gc_tour_seen";
+
 function Menu({ go, profile, scores, isMobile, isTablet, onTakeover, lang, setLang, session, onLogin, onLogout }) {
+  const [showTour, setShowTour] = useState(false);
+
+  // Auto-open tour on first visit (per user, persisted in localStorage)
+  useEffect(() => {
+    if (!session) return;
+    try {
+      if (localStorage.getItem(TOUR_FLAG_KEY) === "1") return;
+    } catch (e) { return; }
+    const id = setTimeout(() => setShowTour(true), 650);
+    return () => clearTimeout(id);
+  }, [session]);
+
+  const closeTour = (reason) => {
+    setShowTour(false);
+    if (reason === "done" || reason === "skip") {
+      try { localStorage.setItem(TOUR_FLAG_KEY, "1"); } catch (e) {}
+    }
+  };
+
   return (
     <div style={{ background: "var(--paper)", minHeight: "100%", display: "flex", flexDirection: "column" }}>
       <TopFrame
@@ -1543,7 +1599,7 @@ function Menu({ go, profile, scores, isMobile, isTablet, onTakeover, lang, setLa
             </div>
           </div>
 
-          <div style={{ border: "1px solid var(--ink)", padding: "14px 16px", display: "grid", gap: 10 }}>
+          <div data-tour="takeover" style={{ border: "1px solid var(--ink)", padding: "14px 16px", display: "grid", gap: 10 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
               <div style={{ fontFamily: "var(--mono)", fontSize: 9, letterSpacing: 2, color: "var(--silver-2)" }}>{t("menu.tactical.label", lang)}</div>
               <div style={{ fontFamily: "var(--mono)", fontSize: 11, fontWeight: 500 }}>{scores.influence} {t("res.ptsLabel", lang)}</div>
@@ -1583,6 +1639,18 @@ function Menu({ go, profile, scores, isMobile, isTablet, onTakeover, lang, setLa
             <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--silver-2)", letterSpacing: 1.5, textAlign: isMobile ? "left" : "right" }}>
               <div>{t("menu.timeGmt", lang)}</div>
               <div>{t("menu.openSeated", lang)}</div>
+              <button
+                onClick={() => setShowTour(true)}
+                style={{
+                  marginTop: 6,
+                  fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, textTransform: "uppercase",
+                  color: "var(--ink)",
+                  borderBottom: "1px solid var(--ink)", padding: "2px 0",
+                  cursor: "pointer",
+                }}
+              >
+                {t("tour.reopen", lang)}
+              </button>
             </div>
           </div>
 
@@ -1605,6 +1673,7 @@ function Menu({ go, profile, scores, isMobile, isTablet, onTakeover, lang, setLa
               return (
                 <button
                   key={m.id}
+                  data-tour={`mode-${m.id}`}
                   onClick={() => target && go(target)}
                   style={{
                     background: dark ? "var(--ink)" : "var(--paper)",
@@ -1661,6 +1730,15 @@ function Menu({ go, profile, scores, isMobile, isTablet, onTakeover, lang, setLa
           </div>
         </main>
       </div>
+
+      {showTour && (
+        <TourOverlay
+          steps={MENU_TOUR_STEPS}
+          onClose={closeTour}
+          lang={lang}
+          isMobile={isMobile}
+        />
+      )}
     </div>
   );
 }
@@ -3054,6 +3132,232 @@ function Leaderboard({ go, session, lang, setLang, isMobile }) {
         )}
       </main>
     </div>
+  );
+}
+
+// ============================================================
+// GUIDED TOUR
+// ============================================================
+
+const MENU_TOUR_STEPS = [
+  { selector: '[data-tour="mode-solo"]',    titleKey: "tour.solo.title",     bodyKey: "tour.solo.body"     },
+  { selector: '[data-tour="mode-multi"]',   titleKey: "tour.multi.title",    bodyKey: "tour.multi.body"    },
+  { selector: '[data-tour="mode-esg"]',     titleKey: "tour.esg.title",      bodyKey: "tour.esg.body"      },
+  { selector: '[data-tour="mode-crisis"]',  titleKey: "tour.crisis.title",   bodyKey: "tour.crisis.body"   },
+  { selector: '[data-tour="mode-leader"]',  titleKey: "tour.leader.title",   bodyKey: "tour.leader.body"   },
+  { selector: '[data-tour="mode-profile"]', titleKey: "tour.profile.title",  bodyKey: "tour.profile.body"  },
+  { selector: '[data-tour="takeover"]',     titleKey: "tour.takeover.title", bodyKey: "tour.takeover.body" },
+];
+
+function TourOverlay({ steps, onClose, lang, isMobile }) {
+  const [idx, setIdx] = useState(0);
+  const [rect, setRect] = useState(null);
+  const [tip, setTip] = useState({ top: 0, left: 0, width: 360, ready: false });
+
+  const step = steps[idx];
+
+  // Measure target on each step + on resize / scroll
+  useEffect(() => {
+    let raf = 0;
+    let scrollTimeout = 0;
+
+    const measure = () => {
+      const el = document.querySelector(step.selector);
+      if (!el) { setRect(null); return; }
+
+      const r = el.getBoundingClientRect();
+      const pad = 8;
+      setRect({
+        top: r.top - pad,
+        left: r.left - pad,
+        width: r.width + pad * 2,
+        height: r.height + pad * 2,
+      });
+
+      const vh = window.innerHeight;
+      const vw = window.innerWidth;
+      const tooltipW = Math.min(380, vw - 32);
+      const tooltipH = 230; // rough; ok for placement decisions
+
+      let top, left;
+      if (r.bottom + 24 + tooltipH <= vh - 16) {
+        top = r.bottom + 24;
+      } else if (r.top - 24 - tooltipH >= 16) {
+        top = r.top - 24 - tooltipH;
+      } else {
+        top = Math.max(16, (vh - tooltipH) / 2);
+      }
+      const targetCenter = r.left + r.width / 2;
+      left = Math.max(16, Math.min(vw - tooltipW - 16, targetCenter - tooltipW / 2));
+      setTip({ top, left, width: tooltipW, ready: true });
+    };
+
+    const el = document.querySelector(step.selector);
+    if (el) {
+      try { el.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" }); } catch (e) {}
+    }
+    // Run an initial measure, then re-measure after the smooth scroll completes
+    raf = requestAnimationFrame(measure);
+    scrollTimeout = setTimeout(measure, 420);
+
+    const onResize = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(measure); };
+    window.addEventListener("resize", onResize);
+    window.addEventListener("scroll", onResize, true);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(scrollTimeout);
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("scroll", onResize, true);
+    };
+  }, [step]);
+
+  // Keyboard nav
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape")     { e.preventDefault(); onClose("skip"); }
+      else if (e.key === "ArrowRight" || e.key === "Enter") {
+        e.preventDefault();
+        if (idx === steps.length - 1) onClose("done"); else setIdx(idx + 1);
+      } else if (e.key === "ArrowLeft" && idx > 0) {
+        e.preventDefault(); setIdx(idx - 1);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [idx, steps.length, onClose]);
+
+  if (!rect || !tip.ready) {
+    // Render a plain backdrop while target is being located
+    return (
+      <div style={{
+        position: "fixed", inset: 0, zIndex: 1000,
+        background: "rgba(11,11,11,0.72)",
+        pointerEvents: "auto",
+      }} />
+    );
+  }
+
+  const x1 = rect.left, x2 = rect.left + rect.width;
+  const y1 = rect.top,  y2 = rect.top  + rect.height;
+  const clipPath = `polygon(0 0, 0 100%, ${x1}px 100%, ${x1}px ${y1}px, ${x2}px ${y1}px, ${x2}px ${y2}px, ${x1}px ${y2}px, ${x1}px 100%, 100% 100%, 100% 0)`;
+
+  const isLast  = idx === steps.length - 1;
+  const isFirst = idx === 0;
+
+  return (
+    <>
+      {/* Dimmed backdrop with animated cutout */}
+      <div style={{
+        position: "fixed", inset: 0, zIndex: 1000,
+        background: "rgba(11,11,11,0.72)",
+        clipPath, WebkitClipPath: clipPath,
+        transition: "clip-path 480ms cubic-bezier(.2,.7,.2,1), -webkit-clip-path 480ms cubic-bezier(.2,.7,.2,1)",
+        pointerEvents: "auto",
+      }} onClick={(e) => e.stopPropagation()} />
+
+      {/* Spotlight border + corner ticks */}
+      <div style={{
+        position: "fixed",
+        top: rect.top, left: rect.left, width: rect.width, height: rect.height,
+        border: "1.5px solid var(--paper)",
+        boxShadow: "0 0 0 1px rgba(11,11,11,0.6), 0 0 40px rgba(246,244,239,0.18)",
+        zIndex: 1001,
+        pointerEvents: "none",
+        transition: "top 480ms cubic-bezier(.2,.7,.2,1), left 480ms cubic-bezier(.2,.7,.2,1), width 480ms cubic-bezier(.2,.7,.2,1), height 480ms cubic-bezier(.2,.7,.2,1)",
+      }}>
+        {/* corner ornaments */}
+        {[[0,0],[1,0],[0,1],[1,1]].map(([cx, cy], i) => (
+          <span key={i} style={{
+            position: "absolute",
+            width: 10, height: 10,
+            left:   cx ? "auto" : -1, right: cx ? -1 : "auto",
+            top:    cy ? "auto" : -1, bottom: cy ? -1 : "auto",
+            borderTop:    !cy ? "1.5px solid var(--paper)" : "none",
+            borderBottom: cy  ? "1.5px solid var(--paper)" : "none",
+            borderLeft:   !cx ? "1.5px solid var(--paper)" : "none",
+            borderRight:  cx  ? "1.5px solid var(--paper)" : "none",
+            transform: cx
+              ? (cy ? "translate(2px, 2px)" : "translate(2px, -2px)")
+              : (cy ? "translate(-2px, 2px)" : "translate(-2px, -2px)"),
+          }} />
+        ))}
+      </div>
+
+      {/* Tooltip */}
+      <div className="pop-in" style={{
+        position: "fixed",
+        top: tip.top, left: tip.left, width: tip.width,
+        background: "var(--paper)",
+        border: "1px solid var(--ink)",
+        padding: isMobile ? "18px 18px" : "22px 24px",
+        zIndex: 1002,
+        boxShadow: "0 18px 48px rgba(0,0,0,0.45)",
+        transition: "top 380ms cubic-bezier(.2,.7,.2,1), left 380ms cubic-bezier(.2,.7,.2,1)",
+      }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 10 }}>
+          <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 3, color: "var(--silver-2)" }}>
+            {String(idx + 1).padStart(2, "0")} / {String(steps.length).padStart(2, "0")}
+          </span>
+          <button onClick={() => onClose("skip")}
+            style={{
+              fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, textTransform: "uppercase",
+              color: "var(--silver-2)", padding: "2px 4px",
+            }}>
+            {t("tour.skip", lang)}
+          </button>
+        </div>
+
+        <h3 style={{
+          margin: 0,
+          fontFamily: "var(--serif)",
+          fontSize: isMobile ? 24 : 28,
+          fontWeight: 500, letterSpacing: -0.5, lineHeight: 1.05,
+          marginBottom: 8,
+        }}>
+          {t(step.titleKey, lang)}
+        </h3>
+        <p style={{
+          margin: 0,
+          fontFamily: "var(--sans)",
+          fontSize: 13, lineHeight: 1.55,
+          color: "var(--ink-2)",
+          marginBottom: 18,
+        }}>
+          {t(step.bodyKey, lang)}
+        </p>
+
+        {/* Progress dots */}
+        <div style={{ display: "flex", gap: 6, marginBottom: 16 }}>
+          {steps.map((_, i) => (
+            <div key={i} style={{
+              flex: 1, height: 2,
+              background: i <= idx ? "var(--ink)" : "var(--rule)",
+              transition: "background 280ms ease",
+            }} />
+          ))}
+        </div>
+
+        <div style={{ display: "flex", gap: 10, alignItems: "center", justifyContent: "space-between" }}>
+          <button
+            onClick={() => !isFirst && setIdx(idx - 1)}
+            disabled={isFirst}
+            style={{
+              fontFamily: "var(--sans)", fontSize: 11, letterSpacing: 2, textTransform: "uppercase",
+              fontWeight: 600,
+              color: isFirst ? "var(--silver)" : "var(--ink-2)",
+              padding: "8px 2px",
+              cursor: isFirst ? "default" : "pointer",
+              opacity: isFirst ? 0.5 : 1,
+            }}
+          >
+            ← {t("tour.prev", lang)}
+          </button>
+          <PillButton small onClick={() => isLast ? onClose("done") : setIdx(idx + 1)}>
+            {isLast ? t("tour.done", lang) : t("tour.next", lang)}
+          </PillButton>
+        </div>
+      </div>
+    </>
   );
 }
 
