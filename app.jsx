@@ -89,27 +89,27 @@ const STRINGS = {
   "mode.solo.label":          { en: "Solo Briefing",                           pt: "Sessão Individual" },
   "mode.solo.desc":           { en: "A single-player governance gauntlet. Eight questions, six pillars.",
                                 pt: "Um percurso de governança individual. Oito questões, seis pilares." },
-  "mode.solo.meta":           { en: "8 questions • 8 min",                     pt: "8 questões • 8 min" },
+  "mode.solo.meta":           { en: "8 questions",                              pt: "8 questões" },
   "mode.multi.label":         { en: "Boardroom",                               pt: "Conselho ao Vivo" },
   "mode.multi.desc":          { en: "Live multiplayer. Seat at a virtual table of four. Speak, vote, defend.",
                                 pt: "Multijogador ao vivo. Cadeira em mesa virtual de quatro. Fale, vote, defenda." },
-  "mode.multi.meta":          { en: "Up to 8 players",                         pt: "Até 8 jogadores" },
+  "mode.multi.meta":          { en: "Coming soon",                              pt: "Em breve" },
   "mode.esg.label":           { en: "ESG Challenge",                           pt: "Desafio ESG" },
   "mode.esg.desc":            { en: "Sustainability-weighted decisions across one fiscal year of pressure.",
                                 pt: "Decisões com peso de sustentabilidade ao longo de um ano fiscal sob pressão." },
-  "mode.esg.meta":            { en: "Seasonal • ranked",                       pt: "Sazonal • ranqueado" },
+  "mode.esg.meta":            { en: "Coming soon",                              pt: "Em breve" },
   "mode.crisis.label":        { en: "Board Crisis",                            pt: "Crise no Conselho" },
   "mode.crisis.desc":         { en: "Time-bound scenarios. The clock decides as much as you do.",
                                 pt: "Cenários com prazo. O relógio decide tanto quanto você." },
-  "mode.crisis.meta":         { en: "6 scenarios live",                        pt: "6 cenários no ar" },
+  "mode.crisis.meta":         { en: "6 scenarios",                              pt: "6 cenários" },
   "mode.leader.label":        { en: "Leaderboard",                             pt: "Ranking" },
   "mode.leader.desc":         { en: "The directors' table — global and institutional rankings.",
                                 pt: "A mesa dos conselheiros — rankings globais e institucionais." },
-  "mode.leader.meta":         { en: "Refreshed hourly",                        pt: "Atualizado a cada hora" },
+  "mode.leader.meta":         { en: "Live",                                     pt: "Ao vivo" },
   "mode.profile.label":       { en: "Director Profile",                        pt: "Dossiê do Conselheiro" },
   "mode.profile.desc":        { en: "Your dossier. Pillar mastery, decision history, certifications.",
                                 pt: "Seu dossiê. Domínio dos pilares, histórico de decisões, certificações." },
-  "mode.profile.meta":        { en: "Tier · Independent",                      pt: "Nível · Independente" },
+  "mode.profile.meta":        { en: "Coming soon",                              pt: "Em breve" },
 
   // ── GAME ──
   "game.lobby":               { en: "← Lobby",                                 pt: "← Lobby" },
@@ -1472,8 +1472,7 @@ function Landing({ go, isMobile, lang, setLang, session, onLogin, onLogout }) {
           <div style={{ fontSize: 11, color: "var(--ink-2)", lineHeight: 1.5 }}>
             {t("landing.tile.crisisBody", lang)}
           </div>
-          <div style={{ marginTop: 14, paddingTop: 12, borderTop: "1px solid var(--rule)", display: "flex", justifyContent: "space-between", fontSize: 10, fontFamily: "var(--mono)", letterSpacing: 1.5, color: "var(--silver-2)" }}>
-            <span>{t("landing.tile.players", lang)}</span>
+          <div style={{ marginTop: 14, paddingTop: 12, borderTop: "1px solid var(--rule)", display: "flex", justifyContent: "flex-end", fontSize: 10, fontFamily: "var(--mono)", letterSpacing: 1.5, color: "var(--silver-2)" }}>
             <span>{t("landing.tile.open", lang)}</span>
           </div>
         </div>
@@ -1543,12 +1542,7 @@ function Menu({ go, profile, scores, isMobile, isTablet, onTakeover, lang, setLa
         left={<Logomark compact={isMobile} />}
         center={t("menu.center", lang)}
         right={
-          <>
-            {!isMobile && (
-              <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)" }}>{t("menu.session", lang)}</span>
-            )}
-            <button onClick={() => go("landing")} style={{ fontFamily: "var(--sans)", fontSize: 11, letterSpacing: 2, textTransform: "uppercase" }}>{t("menu.cover", lang)}</button>
-          </>
+          <button onClick={() => go("landing")} style={{ fontFamily: "var(--sans)", fontSize: 11, letterSpacing: 2, textTransform: "uppercase" }}>{t("menu.cover", lang)}</button>
         }
       />
 
@@ -1567,35 +1561,16 @@ function Menu({ go, profile, scores, isMobile, isTablet, onTakeover, lang, setLa
         }}>
           <div>
             <div style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)", marginBottom: 10 }}>{t("menu.dossier", lang)}</div>
-            <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 18 }}>
+            <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
               <div style={{ width: 56, height: 56, background: "var(--ink)", color: "var(--paper)", display: "grid", placeItems: "center", fontFamily: "var(--serif)", fontSize: 22, fontWeight: 500 }}>
                 {profile.initials}
               </div>
               <div style={{ minWidth: 0 }}>
-                <div style={{ fontFamily: "var(--serif)", fontSize: 22, fontWeight: 500, letterSpacing: -0.3, lineHeight: 1 }}>{profile.name}</div>
-                <div style={{ fontFamily: "var(--sans)", fontSize: 11, color: "var(--silver-2)", marginTop: 4, letterSpacing: 0.5 }}>{t("menu.directorTitle", lang)}</div>
+                <div style={{ fontFamily: "var(--serif)", fontSize: 22, fontWeight: 500, letterSpacing: -0.3, lineHeight: 1.05 }}>{profile.name}</div>
+                {session && session.user && (
+                  <div style={{ fontFamily: "var(--sans)", fontSize: 11, color: "var(--silver-2)", marginTop: 4, letterSpacing: 0.5 }}>{session.user.course}</div>
+                )}
               </div>
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 16, paddingTop: 18, borderTop: "1px solid var(--rule)" }}>
-              <Stat label={t("menu.stat.rating", lang)}    value="2,184" hint={t("menu.stat.weekHint", lang)} />
-              <Stat label={t("menu.stat.tier", lang)}      value={t("menu.stat.tierVal", lang)} />
-              <Stat label={t("menu.stat.decisions", lang)} value="487" />
-              <Stat label={t("menu.stat.streak", lang)}    value={t("menu.stat.streakVal", lang)} />
-            </div>
-          </div>
-
-          <div>
-            <div style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)", marginBottom: 14 }}>{t("menu.pillarMastery", lang)}</div>
-            <div style={{ display: "grid", gap: 14 }}>
-              {[["pillar.ethics", 84], ["pillar.risk", 71], ["pillar.esg", 62], ["pillar.audit", 78], ["pillar.strategy", 55], ["pillar.disclosure", 69]].map(([key, v]) => (
-                <div key={key} style={{ display: "grid", gridTemplateColumns: "100px 1fr 30px", gap: 10, alignItems: "center" }}>
-                  <span style={{ fontFamily: "var(--sans)", fontSize: 11, letterSpacing: 0.4 }}>{t(key, lang)}</span>
-                  <div style={{ height: 1, background: "var(--rule)", position: "relative" }}>
-                    <div style={{ position: "absolute", inset: 0, width: `${v}%`, background: "var(--ink)" }} />
-                  </div>
-                  <span style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--silver-2)", textAlign: "right" }}>{v}</span>
-                </div>
-              ))}
             </div>
           </div>
 
@@ -1636,22 +1611,18 @@ function Menu({ go, profile, scores, isMobile, isTablet, onTakeover, lang, setLa
                 {t("menu.takeYourSeatA", lang)} <em style={{ fontWeight: 400 }}>{t("menu.takeYourSeatB", lang)}</em>
               </h2>
             </div>
-            <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--silver-2)", letterSpacing: 1.5, textAlign: isMobile ? "left" : "right" }}>
-              <div>{t("menu.timeGmt", lang)}</div>
-              <div>{t("menu.openSeated", lang)}</div>
-              <button
-                onClick={() => setShowTour(true)}
-                style={{
-                  marginTop: 6,
-                  fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, textTransform: "uppercase",
-                  color: "var(--ink)",
-                  borderBottom: "1px solid var(--ink)", padding: "2px 0",
-                  cursor: "pointer",
-                }}
-              >
-                {t("tour.reopen", lang)}
-              </button>
-            </div>
+            <button
+              onClick={() => setShowTour(true)}
+              style={{
+                fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, textTransform: "uppercase",
+                color: "var(--ink)",
+                borderBottom: "1px solid var(--ink)", padding: "2px 0",
+                cursor: "pointer",
+                alignSelf: isMobile ? "flex-start" : "flex-end",
+              }}
+            >
+              {t("tour.reopen", lang)}
+            </button>
           </div>
 
           <div style={{
@@ -1721,7 +1692,7 @@ function Menu({ go, profile, scores, isMobile, isTablet, onTakeover, lang, setLa
             gap: 24, alignItems: "center", padding: "16px 0",
           }}>
             <div style={{ fontFamily: "var(--sans)", fontSize: 12, color: "var(--ink-2)", marginBottom: isMobile ? 10 : 0 }}>
-              <em style={{ fontFamily: "var(--serif)", fontSize: 16 }}>{t("menu.boardSet", lang)}</em> {t("menu.cohortOpens", lang)}
+              <em style={{ fontFamily: "var(--serif)", fontSize: 16 }}>{t("menu.boardSet", lang)}</em>
             </div>
             {!isMobile && <Rule style={{ width: 80 }} />}
             <div style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)", textAlign: isMobile ? "left" : "right" }}>
