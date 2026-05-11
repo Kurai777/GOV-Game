@@ -86,7 +86,7 @@ create or replace function register_user(
 returns json
 language plpgsql
 security definer
-set search_path = public, pg_temp
+set search_path = public, extensions, pg_temp
 as $$
 declare
   v_user_id uuid;
@@ -110,7 +110,7 @@ begin
   end if;
 
   insert into users (username, password_hash, full_name, course)
-  values (v_uname, crypt(p_password, gen_salt('bf', 10)), trim(p_full_name), trim(p_course))
+  values (v_uname, extensions.crypt(p_password, extensions.gen_salt('bf', 10)), trim(p_full_name), trim(p_course))
   returning id into v_user_id;
 
   insert into sessions (user_id) values (v_user_id) returning token into v_token;
@@ -135,7 +135,7 @@ create or replace function login_user(
 returns json
 language plpgsql
 security definer
-set search_path = public, pg_temp
+set search_path = public, extensions, pg_temp
 as $$
 declare
   v_user  users%rowtype;
@@ -143,7 +143,7 @@ declare
   v_uname text := lower(trim(p_username));
 begin
   select * into v_user from users where username = v_uname;
-  if not found or v_user.password_hash <> crypt(p_password, v_user.password_hash) then
+  if not found or v_user.password_hash <> extensions.crypt(p_password, v_user.password_hash) then
     -- intentionally generic message — don't leak whether the username exists
     return json_build_object('error', 'invalid_credentials');
   end if;
@@ -179,7 +179,7 @@ create or replace function save_run(
 returns json
 language plpgsql
 security definer
-set search_path = public, pg_temp
+set search_path = public, extensions, pg_temp
 as $$
 declare
   v_user_id uuid;
@@ -221,7 +221,7 @@ returns table (
 language sql
 security definer
 stable
-set search_path = public, pg_temp
+set search_path = public, extensions, pg_temp
 as $$
   with agg as (
     select
@@ -254,7 +254,7 @@ returns table (
 language sql
 security definer
 stable
-set search_path = public, pg_temp
+set search_path = public, extensions, pg_temp
 as $$
   select r.composite, r.esg, r.reputation, r.transparency, r.risk,
          r.influence, r.accuracy_pct, r.archetype, r.tier, r.lang, r.played_at
@@ -271,7 +271,7 @@ create or replace function logout(p_token uuid)
 returns json
 language plpgsql
 security definer
-set search_path = public, pg_temp
+set search_path = public, extensions, pg_temp
 as $$
 begin
   delete from sessions where token = p_token;
@@ -302,7 +302,7 @@ grant execute on function logout(uuid)                                          
 
 create or replace function cleanup_expired_sessions() returns void
 language sql security definer
-set search_path = public, pg_temp
+set search_path = public, extensions, pg_temp
 as $$
   delete from sessions where expires_at < now();
 $$;
