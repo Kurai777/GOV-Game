@@ -178,12 +178,28 @@ const STRINGS = {
   "tier.censured":            { en: "Censured",                                pt: "Censurado" },
   "arch.steward":             { en: "Steward",                                 pt: "Guardião" },
   "arch.agent":               { en: "Opportunistic Agent",                     pt: "Agente Oportunista" },
+  "arch.stakeholder":         { en: "Stakeholder Champion",                    pt: "Defensor de Stakeholders" },
+  "arch.monitor":             { en: "Independent Monitor",                     pt: "Monitor Independente" },
+  "arch.connector":           { en: "Strategic Connector",                     pt: "Conector Estratégico" },
   "arch.indDirector":         { en: "Independent Director",                    pt: "Conselheiro Independente" },
   "arch.balanced":            { en: "Balanced Director",                       pt: "Conselheiro Equilibrado" },
+  "arch.steward.theory":      { en: "Stewardship Theory · Davis, Schoorman & Donaldson (1997)",                                   pt: "Teoria do Stewardship · Davis, Schoorman & Donaldson (1997)" },
+  "arch.agent.theory":        { en: "Agency Theory · Jensen & Meckling (1976)",                                                   pt: "Teoria da Agência · Jensen & Meckling (1976)" },
+  "arch.stakeholder.theory":  { en: "Stakeholder Theory · Freeman (1984); Donaldson & Preston (1995)",                            pt: "Teoria dos Stakeholders · Freeman (1984); Donaldson & Preston (1995)" },
+  "arch.monitor.theory":      { en: "Compliance & Audit · Cadbury (1992); SOX (2002)",                                            pt: "Compliance e Auditoria · Cadbury (1992); SOX (2002)" },
+  "arch.connector.theory":    { en: "Resource Dependence Theory · Pfeffer & Salancik (1978)",                                     pt: "Teoria da Dependência de Recursos · Pfeffer & Salancik (1978)" },
+  "arch.balanced.theory":     { en: "No dominant pattern — a balanced reading across the five schools.",                          pt: "Nenhum padrão dominante — leitura equilibrada entre as cinco escolas." },
+  "arch.steward.desc":        { en: "Intrinsic alignment with the firm. Long-term horizon. Decisions prioritize collective good over personal gain.",                  pt: "Alinhamento intrínseco com a firma. Horizonte longo. Decisões priorizam o bem coletivo sobre ganho pessoal." },
+  "arch.agent.desc":          { en: "Self-interest as decision driver. Short-term profit focus. Weak alignment with stakeholder outcomes.",                              pt: "Interesse próprio como motor de decisão. Foco em lucro de curto prazo. Alinhamento fraco com stakeholders." },
+  "arch.stakeholder.desc":    { en: "Multi-stakeholder balance. ESG-forward. Recognizes obligations beyond shareholders.",                                                pt: "Equilíbrio multi-stakeholder. ESG no centro. Reconhece obrigações além dos acionistas." },
+  "arch.monitor.desc":        { en: "Procedural rigor. Audit-forward. Strong on internal controls, disclosure, and compliance.",                                          pt: "Rigor procedural. Foco em auditoria. Forte em controles internos, divulgação e compliance." },
+  "arch.connector.desc":      { en: "Networks, external ties, pragmatic dealmaking. Reduces uncertainty through relationships and access.",                              pt: "Redes, vínculos externos, pragmatismo na construção de acordos. Reduz incerteza por relações e acesso." },
+  "arch.balanced.desc":       { en: "No single school dominates your decisions. The reading suggests a director who weighs multiple frames before committing.",          pt: "Nenhuma escola domina suas decisões. A leitura sugere uma conselheira que pesa múltiplos referenciais antes de se comprometer." },
   "res.verdict":              { en: "\"{name} navigated the pillars with discernment. The decision pattern reflects a director willing to call the chair when transparency is on the table — and to hold counsel when it is not.\"",
                                 pt: "\"{name} navegou pelos pilares com discernimento. O padrão de decisão reflete uma conselheira disposta a desafiar a presidência quando a transparência está em jogo — e a guardar conselho quando não está.\"" },
   "res.auditCommittee":       { en: "— Audit Committee, Independent Review",   pt: "— Comitê de Auditoria, Revisão Independente" },
   "res.objAccuracy":          { en: "OBJECTIVE · ACCURACY",                    pt: "OBJETIVO · PRECISÃO" },
+  "res.objDecisions":         { en: "DECISIONS RECORDED",                      pt: "DECISÕES REGISTRADAS" },
   "res.objPillars":           { en: "OBJECTIVE · PILLARS ≥ 30",                pt: "OBJETIVO · PILARES ≥ 30" },
   "res.objInfluence":         { en: "INFLUENCE",                               pt: "INFLUÊNCIA" },
   "res.minLabel":             { en: "min",                                     pt: "mín" },
@@ -292,6 +308,23 @@ const STRINGS = {
   "save.saved":               { en: "Recorded in the registry.",               pt: "Registrado no livro." },
   "save.error":               { en: "Save failed. Score kept locally.",        pt: "Falha ao salvar. Pontuação mantida localmente." },
   "save.notConfigured":       { en: "Backend not configured — score not recorded.", pt: "Backend não configurado — pontuação não registrada." },
+  "save.warming":             { en: "Server warming up. Score queued — we'll save it the moment it's back.",
+                                pt: "Servidor aquecendo. Pontuação enfileirada — salvaremos assim que voltar." },
+  "save.queued":              { en: "Score kept locally. {n} run(s) pending.",
+                                pt: "Pontuação mantida localmente. {n} partida(s) pendente(s)." },
+  "save.retry":               { en: "Retry save",                                   pt: "Tentar salvar de novo" },
+  "save.flushed":             { en: "{n} pending run(s) recorded.",                 pt: "{n} partida(s) pendente(s) registrada(s)." },
+
+  // ── PROFILE / RESULTS ──
+  "res.profileBreakdown":     { en: "PROFILE · DISTRIBUTION",                       pt: "PERFIL · DISTRIBUIÇÃO" },
+  "res.furtherReading":       { en: "FURTHER READING",                              pt: "LEITURAS ADICIONAIS" },
+  "res.sources":              { en: "sources",                                      pt: "fontes" },
+  "res.archetypeDesc":        { en: "Your decision pattern aligns most strongly with this school.",
+                                pt: "Seu padrão de decisão alinha-se mais fortemente a esta escola." },
+  "game.answersRecorded":     { en: "ANSWERS RECORDED",                             pt: "RESPOSTAS REGISTRADAS" },
+  "opt.recorded":             { en: "RECORDED",                                     pt: "REGISTRADA" },
+  "game.recordedHint":        { en: "Answer recorded. No right or wrong — your pattern is being read.",
+                                pt: "Resposta registrada. Sem certo ou errado — seu padrão está sendo lido." },
 
   // ── TOUR ──
   "tour.next":             { en: "Next →",          pt: "Próximo →" },
@@ -362,19 +395,23 @@ const QUESTIONS = [
       { k: "A", correct: false,
         text: { en: "Currency risk in international trade.",                                  pt: "Risco cambial no comércio internacional." },
         note: { en: "FX risk is a treasury concern, not the foundational governance problem.", pt: "Risco cambial é tema de tesouraria, não o problema-base de governança." },
+        weights: { steward: 0, agent: 0, stakeholder: 0, monitor: 0, connector: 0 },
       },
       { k: "B", correct: true,
         text: { en: "Conflicts of interest between owners and managers — the agency problem.", pt: "Conflitos de interesse entre proprietários e gestores — o problema da agência." },
         note: { en: "Jensen & Meckling (1976): owners delegate to managers, whose self-interest may diverge from shareholder value.",
                 pt: "Jensen & Meckling (1976): proprietários delegam aos gestores, cujo interesse próprio pode divergir do valor dos acionistas." },
+        weights: { steward: 2, agent: -1, stakeholder: 0, monitor: 1, connector: 0 },
       },
       { k: "C", correct: false,
         text: { en: "Seasonal sales variations across fiscal quarters.", pt: "Variações sazonais de vendas entre trimestres fiscais." },
         note: { en: "Operational, not a governance problem.",            pt: "Tema operacional, não de governança." },
+        weights: { steward: 0, agent: 1, stakeholder: -1, monitor: -1, connector: 0 },
       },
       { k: "D", correct: false,
         text: { en: "The cost of external audits and consultancy.", pt: "O custo de auditorias e consultorias externas." },
         note: { en: "Audit cost is an output of governance, not its target.", pt: "Custo de auditoria é consequência da governança, não seu alvo." },
+        weights: { steward: 0, agent: 0, stakeholder: 0, monitor: 2, connector: 0 },
       },
     ],
     citation: { en: "Jensen & Meckling — Theory of the Firm (1976)", pt: "Jensen & Meckling — Theory of the Firm (1976)" },
@@ -389,21 +426,25 @@ const QUESTIONS = [
       { k: "A", correct: false,
         text: { en: "Transparency.",   pt: "Transparência." },
         note: { en: "Transparency governs disclosure, not equitable treatment.", pt: "Transparência rege a divulgação, não o tratamento equitativo." },
+        weights: { steward: 0, agent: 0, stakeholder: 0, monitor: 2, connector: 0 },
       },
       { k: "B", correct: true,
         text: { en: "Fairness (Equity).", pt: "Equidade." },
         note: { en: "Equidade is the IBGC pillar protecting minority shareholders from controller abuse.",
                 pt: "A Equidade é o pilar do IBGC que protege acionistas minoritários do abuso do controlador." },
+        weights: { steward: 1, agent: -1, stakeholder: 3, monitor: 1, connector: 0 },
       },
       { k: "C", correct: false,
         text: { en: "Accountability.", pt: "Prestação de Contas." },
         note: { en: "Accountability concerns the duty to render account, not equity of treatment.",
                 pt: "Prestação de contas trata do dever de prestar contas, não da equidade de tratamento." },
+        weights: { steward: 1, agent: 0, stakeholder: 0, monitor: 1, connector: 0 },
       },
       { k: "D", correct: false,
         text: { en: "Corporate Responsibility.", pt: "Responsabilidade Corporativa." },
         note: { en: "Responsibility addresses long-term sustainability, not minority rights.",
                 pt: "A Responsabilidade trata de sustentabilidade de longo prazo, não de direitos de minoritários." },
+        weights: { steward: 2, agent: -1, stakeholder: 1, monitor: 0, connector: 0 },
       },
     ],
     citation: { en: "IBGC — Code of Best Practices, 6th edition", pt: "IBGC — Código das Melhores Práticas, 6ª edição" },
@@ -418,21 +459,25 @@ const QUESTIONS = [
       { k: "A", correct: false,
         text: { en: "Preferred shares with double dividends.", pt: "Ações preferenciais com dividendo em dobro." },
         note: { en: "Novo Mercado prohibits preferred shares entirely.", pt: "O Novo Mercado proíbe completamente ações preferenciais." },
+        weights: { steward: 0, agent: 1, stakeholder: -1, monitor: -1, connector: 0 },
       },
       { k: "B", correct: true,
         text: { en: "Only common voting shares — one share, one vote.", pt: "Apenas ações ordinárias com voto — uma ação, um voto." },
         note: { en: "Novo Mercado is B3's highest tier; voting power tracks economic interest exactly.",
                 pt: "O Novo Mercado é o nível máximo da B3; poder de voto acompanha exatamente o interesse econômico." },
+        weights: { steward: 1, agent: -2, stakeholder: 3, monitor: 2, connector: 0 },
       },
       { k: "C", correct: false,
         text: { en: "Dual-class shares with super-voting rights for founders.", pt: "Ações de classe dupla com voto qualificado para fundadores." },
         note: { en: "Dual-class structures are explicitly forbidden under Novo Mercado.",
                 pt: "Estruturas dual-class são explicitamente vedadas no Novo Mercado." },
+        weights: { steward: -1, agent: 2, stakeholder: -2, monitor: -2, connector: 1 },
       },
       { k: "D", correct: false,
         text: { en: "Hybrid debentures convertible at the controller's option.", pt: "Debêntures híbridas conversíveis a critério do controlador." },
         note: { en: "Conversion at controller option would entrench control — incompatible with the segment.",
                 pt: "Conversão a critério do controlador entrincheiraria o controle — incompatível com o segmento." },
+        weights: { steward: 0, agent: 2, stakeholder: -2, monitor: -1, connector: 0 },
       },
     ],
     citation: { en: "B3 — Regulamento do Novo Mercado, §3.1", pt: "B3 — Regulamento do Novo Mercado, §3.1" },
@@ -449,24 +494,28 @@ const QUESTIONS = [
                 pt: "CEOs e CFOs devem certificar pessoalmente a exatidão dos relatórios financeiros." },
         note: { en: "§302 makes officers personally — and criminally — liable for material misstatements.",
                 pt: "A §302 torna os executivos pessoal e criminalmente responsáveis por declarações materialmente falsas." },
+        weights: { steward: 1, agent: -1, stakeholder: 0, monitor: 3, connector: 0 },
       },
       { k: "B", correct: false,
         text: { en: "Companies must hire the same firm for auditing and consulting.",
                 pt: "Companhias devem contratar a mesma firma para auditoria e consultoria." },
         note: { en: "SOX forbids most audit/consulting bundling — §201.",
                 pt: "A SOX veda a maior parte da combinação auditoria/consultoria — §201." },
+        weights: { steward: -1, agent: 1, stakeholder: 0, monitor: -2, connector: 1 },
       },
       { k: "C", correct: false,
         text: { en: "Shareholders must vote directly on executive pay annually.",
                 pt: "Acionistas devem votar diretamente a remuneração executiva todo ano." },
         note: { en: "Say-on-pay arose under Dodd-Frank, not SOX.",
                 pt: "O say-on-pay surgiu na Dodd-Frank, não na SOX." },
+        weights: { steward: 0, agent: 0, stakeholder: 1, monitor: 0, connector: 0 },
       },
       { k: "D", correct: false,
         text: { en: "Whistleblowers gain anonymity in audit-committee reporting.",
                 pt: "Denunciantes ganham anonimato no canal do comitê de auditoria." },
         note: { en: "That's §806 — adjacent, but a different section.",
                 pt: "Isso é a §806 — próxima, mas uma seção distinta." },
+        weights: { steward: 0, agent: 0, stakeholder: 1, monitor: 1, connector: 0 },
       },
     ],
     citation: { en: "Sarbanes-Oxley Act of 2002, §302", pt: "Sarbanes-Oxley Act de 2002, §302" },
@@ -483,24 +532,28 @@ const QUESTIONS = [
                 pt: "Queda mensurável nas taxas de inovação tecnológica." },
         note: { en: "Possible second-order effect, not the central thesis.",
                 pt: "Efeito de segunda ordem possível, mas não a tese central." },
+        weights: { steward: 0, agent: 0, stakeholder: 0, monitor: 0, connector: -1 },
       },
       { k: "B", correct: true,
         text: { en: "Board capture by external stakeholders or the State (e.g., Lava Jato).",
                 pt: "Captura do conselho por stakeholders externos ou pelo Estado (ex.: Lava Jato)." },
         note: { en: "Pfeffer & Salancik: the same external ties that reduce uncertainty also create capture risk.",
                 pt: "Pfeffer & Salancik: os mesmos vínculos externos que reduzem incerteza criam risco de captura." },
+        weights: { steward: 1, agent: -1, stakeholder: 1, monitor: 1, connector: 3 },
       },
       { k: "C", correct: false,
         text: { en: "Mandatory elimination of the audit committee.",
                 pt: "Eliminação obrigatória do comitê de auditoria." },
         note: { en: "Composition does not affect the audit committee's existence.",
                 pt: "Composição não afeta a existência do comitê de auditoria." },
+        weights: { steward: 0, agent: 0, stakeholder: 0, monitor: -2, connector: 0 },
       },
       { k: "D", correct: false,
         text: { en: "Increased dividend payout volatility.",
                 pt: "Aumento da volatilidade do payout de dividendos." },
         note: { en: "Dividend policy is set independently of board composition.",
                 pt: "Política de dividendos é definida independentemente da composição do conselho." },
+        weights: { steward: 0, agent: 1, stakeholder: -1, monitor: 0, connector: 0 },
       },
     ],
     citation: { en: "Pfeffer & Salancik — The External Control of Organizations (1978)", pt: "Pfeffer & Salancik — The External Control of Organizations (1978)" },
@@ -517,18 +570,22 @@ const QUESTIONS = [
                 pt: "Esconder dívidas e inflar os lucros reportados fora do balanço." },
         note: { en: "LJM, Raptors, etc. — debt and weak assets parked outside consolidation manufactured paper earnings.",
                 pt: "LJM, Raptors etc. — dívida e ativos fracos parqueados fora da consolidação fabricaram lucros de papel." },
+        weights: { steward: 1, agent: -2, stakeholder: 0, monitor: 3, connector: 0 },
       },
       { k: "B", correct: false,
         text: { en: "Invest in ethical water-treatment infrastructure projects.", pt: "Investir em projetos éticos de tratamento de água." },
         note: { en: "Enron's SPEs were not ESG vehicles.", pt: "As SPEs da Enron não eram veículos ESG." },
+        weights: { steward: 0, agent: 0, stakeholder: 1, monitor: -1, connector: 0 },
       },
       { k: "C", correct: false,
         text: { en: "Pay regular dividends to minority shareholders.", pt: "Pagar dividendos regulares a acionistas minoritários." },
         note: { en: "SPEs were not dividend conduits.", pt: "As SPEs não eram canais de dividendos." },
+        weights: { steward: 0, agent: 1, stakeholder: -1, monitor: -1, connector: 0 },
       },
       { k: "D", correct: false,
         text: { en: "Comply with SEC fair-disclosure requirements.", pt: "Cumprir os requisitos de divulgação justa da SEC." },
         note: { en: "They were structured to avoid, not satisfy, disclosure norms.", pt: "Foram estruturadas para evitar, não cumprir, normas de divulgação." },
+        weights: { steward: 0, agent: 0, stakeholder: 0, monitor: -1, connector: 0 },
       },
     ],
     citation: { en: "SEC v. Enron — In re Enron Corp. Securities (2003)", pt: "SEC v. Enron — In re Enron Corp. Securities (2003)" },
@@ -543,19 +600,23 @@ const QUESTIONS = [
       { k: "A", correct: false,
         text: { en: "The firm's Scope 3 emissions on regional air quality.", pt: "As emissões Escopo 3 da empresa sobre a qualidade do ar regional." },
         note: { en: "That is impact materiality — outward effect.", pt: "Isso é materialidade de impacto — efeito para fora." },
+        weights: { steward: 0, agent: 0, stakeholder: 2, monitor: 0, connector: 0 },
       },
       { k: "B", correct: true,
         text: { en: "Carbon-pricing legislation impacting the firm's cost base.", pt: "Legislação de precificação de carbono que afeta a estrutura de custos da empresa." },
         note: { en: "Inward materiality: how sustainability factors affect the firm's financial performance.",
                 pt: "Materialidade inward: como fatores de sustentabilidade afetam o desempenho financeiro da empresa." },
+        weights: { steward: 1, agent: 1, stakeholder: 2, monitor: 2, connector: 0 },
       },
       { k: "C", correct: false,
         text: { en: "Community displacement adjacent to a new facility.", pt: "Deslocamento comunitário próximo a uma nova planta." },
         note: { en: "Impact materiality, not inward.", pt: "Materialidade de impacto, não inward." },
+        weights: { steward: 1, agent: -1, stakeholder: 2, monitor: 0, connector: 0 },
       },
       { k: "D", correct: false,
         text: { en: "Effluent from operations entering a watershed.", pt: "Efluentes das operações chegando a uma bacia hidrográfica." },
         note: { en: "Impact materiality — externalities on stakeholders.", pt: "Materialidade de impacto — externalidades sobre stakeholders." },
+        weights: { steward: 0, agent: -1, stakeholder: 2, monitor: 0, connector: 0 },
       },
     ],
     citation: { en: "EFRAG ESRS 1, §3 — Double materiality", pt: "EFRAG ESRS 1, §3 — Dupla materialidade" },
@@ -571,24 +632,28 @@ const QUESTIONS = [
         text: { en: "Allow the member to vote, noting the disclosure in the minutes.",
                 pt: "Permitir que ele vote, registrando a divulgação em ata." },
         note: { en: "Disclosure alone does not eliminate the conflict.", pt: "Divulgação sozinha não elimina o conflito." },
+        weights: { steward: -1, agent: 2, stakeholder: -1, monitor: -2, connector: 1 },
       },
       { k: "B", correct: true,
         text: { en: "Recuse the member from deliberation and the vote.",
                 pt: "Afastá-lo da deliberação e da votação (recusa formal)." },
         note: { en: "Recusal is the standard remedy for material conflicts of interest.",
                 pt: "A recusa formal é o remédio padrão para conflitos materiais de interesse." },
+        weights: { steward: 1, agent: -1, stakeholder: 2, monitor: 3, connector: 0 },
       },
       { k: "C", correct: false,
         text: { en: "Require the member to divest before the next meeting.",
                 pt: "Exigir desinvestimento antes da próxima reunião." },
         note: { en: "Divestment may follow, but the immediate remedy is recusal.",
                 pt: "Desinvestimento pode vir depois, mas o remédio imediato é a recusa." },
+        weights: { steward: 1, agent: 0, stakeholder: 1, monitor: 1, connector: -1 },
       },
       { k: "D", correct: false,
         text: { en: "Refer the matter to the external auditor for review.",
                 pt: "Encaminhar o tema ao auditor externo para análise." },
         note: { en: "Auditor review is unrelated to a deliberative conflict.",
                 pt: "Análise do auditor não trata de conflito deliberativo." },
+        weights: { steward: 0, agent: 0, stakeholder: 0, monitor: 2, connector: 0 },
       },
     ],
     citation: { en: "OECD Principles of Corporate Governance, Principle V.A.4", pt: "Princípios de Governança Corporativa OCDE, Princípio V.A.4" },
@@ -624,6 +689,7 @@ const SCENARIOS = [
         sub:   { en: "Do not delay the call. Investigate the allegation discreetly post-close.", pt: "Não adiar a call. Investigar a denúncia discretamente após o fechamento." },
         verdict: { en: "Concealment risk", pt: "Risco de ocultação" },
         impacts: { reputation: -22, esg: -8,  board: -18, transparency: -34 },
+        weights: { steward: -2, agent: 3, stakeholder: -2, monitor: -3, connector: 1 },
       },
       {
         id: "d2", tone: "positive",
@@ -631,6 +697,7 @@ const SCENARIOS = [
         sub:   { en: "Disclose the inquiry without specifics. Reconvene the audit committee within 24 hours.", pt: "Divulgar a apuração sem entrar em detalhes. Reconvocar o comitê de auditoria em 24 horas." },
         verdict: { en: "Measured disclosure", pt: "Divulgação ponderada" },
         impacts: { reputation: -6,  esg: +2,  board: +12, transparency: +18 },
+        weights: { steward: 1, agent: -1, stakeholder: 1, monitor: 2, connector: 0 },
       },
       {
         id: "d3", tone: "positive",
@@ -638,6 +705,7 @@ const SCENARIOS = [
         sub:   { en: "Engage external counsel, formal review, full transparency before any guidance.", pt: "Engajar assessoria externa, revisão formal, total transparência antes de qualquer guidance." },
         verdict: { en: "Highest fiduciary standard", pt: "Padrão fiduciário máximo" },
         impacts: { reputation: -2,  esg: +4,  board: +20, transparency: +28 },
+        weights: { steward: 3, agent: -3, stakeholder: 2, monitor: 3, connector: -1 },
       },
       {
         id: "d4", tone: "negative",
@@ -645,6 +713,7 @@ const SCENARIOS = [
         sub:   { en: "Direct, off-the-record. Decide collectively whether to proceed.", pt: "Direto, fora dos autos. Decidir coletivamente se prossegue." },
         verdict: { en: "Procedural deviation", pt: "Desvio procedural" },
         impacts: { reputation: -10, esg: -2,  board: -8,  transparency: -4  },
+        weights: { steward: 0, agent: 1, stakeholder: -1, monitor: -2, connector: 2 },
       },
     ],
   },
@@ -676,6 +745,7 @@ const SCENARIOS = [
         sub:   { en: "Comply with CVM Resolution 44 — disclose now, take the hit, preserve credibility.", pt: "Cumprir a Res. CVM 44 — divulgar já, absorver o impacto, preservar credibilidade." },
         verdict: { en: "Comply now", pt: "Cumprir agora" },
         impacts: { reputation: -20, esg: +6, board: +18, transparency: +30 },
+        weights: { steward: 2, agent: -2, stakeholder: 2, monitor: 3, connector: -1 },
       },
       {
         id: "d2", tone: "negative",
@@ -683,6 +753,7 @@ const SCENARIOS = [
         sub:   { en: "Buy time. Hope a strong quarter offsets the gap before anyone digs.", pt: "Ganhar tempo. Torcer para um trimestre forte cobrir o buraco antes que cavem." },
         verdict: { en: "Concealment risk", pt: "Risco de ocultação" },
         impacts: { reputation: +8, esg: -22, board: -28, transparency: -42 },
+        weights: { steward: -2, agent: 3, stakeholder: -2, monitor: -3, connector: 1 },
       },
       {
         id: "d3", tone: "negative",
@@ -690,6 +761,7 @@ const SCENARIOS = [
         sub:   { en: "Selective preview to anchor investors; full statement at close.", pt: "Prévia seletiva para investidores-âncora; comunicado completo no fechamento." },
         verdict: { en: "Selective disclosure", pt: "Divulgação seletiva" },
         impacts: { reputation: -8, esg: -4, board: -10, transparency: -18 },
+        weights: { steward: -1, agent: 1, stakeholder: -2, monitor: -2, connector: 2 },
       },
       {
         id: "d4", tone: "positive",
@@ -697,6 +769,7 @@ const SCENARIOS = [
         sub:   { en: "Ring-fence governance. External counsel leads. Disclosure within 48h.", pt: "Cercar a governança. Assessoria externa lidera. Divulgação em 48h." },
         verdict: { en: "Highest standard", pt: "Padrão máximo" },
         impacts: { reputation: -12, esg: +10, board: +22, transparency: +24 },
+        weights: { steward: 3, agent: -3, stakeholder: 2, monitor: 3, connector: -1 },
       },
     ],
   },
@@ -728,6 +801,7 @@ const SCENARIOS = [
         sub:   { en: "Stakeholders want good news. Reconcile the data later if questioned.", pt: "Stakeholders querem boas notícias. Reconciliar dados depois, se cobrarem." },
         verdict: { en: "Marketing-led", pt: "Liderada por marketing" },
         impacts: { reputation: +6, esg: -32, board: -16, transparency: -22 },
+        weights: { steward: -1, agent: 3, stakeholder: -3, monitor: -2, connector: 1 },
       },
       {
         id: "d2", tone: "positive",
@@ -735,6 +809,7 @@ const SCENARIOS = [
         sub:   { en: "Smaller campaign with claims you can defend in court.", pt: "Campanha menor com alegações defensáveis em juízo." },
         verdict: { en: "Audit-aligned", pt: "Alinhada à auditoria" },
         impacts: { reputation: -4, esg: +18, board: +14, transparency: +20 },
+        weights: { steward: 1, agent: -2, stakeholder: 2, monitor: 3, connector: -1 },
       },
       {
         id: "d3", tone: "negative",
@@ -742,6 +817,7 @@ const SCENARIOS = [
         sub:   { en: "Ambiguity protects everyone — for now.", pt: "Ambiguidade protege a todos — por ora." },
         verdict: { en: "Procedural drift", pt: "Desvio procedural" },
         impacts: { reputation: +2, esg: -8, board: -6, transparency: -10 },
+        weights: { steward: 0, agent: 1, stakeholder: -1, monitor: -1, connector: 2 },
       },
       {
         id: "d4", tone: "positive",
@@ -749,6 +825,7 @@ const SCENARIOS = [
         sub:   { en: "Substitute aspiration for false claim. Bind the firm to a credible plan.", pt: "Substituir alegação falsa por aspiração. Comprometer a empresa com plano crível." },
         verdict: { en: "Credible commitment", pt: "Compromisso crível" },
         impacts: { reputation: +4, esg: +14, board: +10, transparency: +12 },
+        weights: { steward: 2, agent: -1, stakeholder: 3, monitor: 1, connector: 0 },
       },
     ],
   },
@@ -780,6 +857,7 @@ const SCENARIOS = [
         sub:   { en: "Avoid the disruption of a leadership change.", pt: "Evitar a disrupção de uma troca de liderança." },
         verdict: { en: "Agency cost incurred", pt: "Custo de agência incorrido" },
         impacts: { reputation: -14, esg: -6, board: -16, transparency: -10 },
+        weights: { steward: -2, agent: 3, stakeholder: -1, monitor: -2, connector: 1 },
       },
       {
         id: "d2", tone: "positive",
@@ -787,6 +865,7 @@ const SCENARIOS = [
         sub:   { en: "Align pay with sustained value creation.", pt: "Alinhar remuneração à criação de valor sustentada." },
         verdict: { en: "Alignment achieved", pt: "Alinhamento alcançado" },
         impacts: { reputation: +10, esg: +14, board: +18, transparency: +12 },
+        weights: { steward: 3, agent: -1, stakeholder: 2, monitor: 2, connector: 0 },
       },
       {
         id: "d3", tone: "positive",
@@ -794,6 +873,7 @@ const SCENARIOS = [
         sub:   { en: "Costly, risky, but signals discipline.", pt: "Custoso, arriscado, mas sinaliza disciplina." },
         verdict: { en: "Disciplined Board", pt: "Conselho disciplinado" },
         impacts: { reputation: +4, esg: +6, board: +12, transparency: +14 },
+        weights: { steward: 1, agent: -1, stakeholder: 1, monitor: 2, connector: -1 },
       },
       {
         id: "d4", tone: "positive",
@@ -801,6 +881,7 @@ const SCENARIOS = [
         sub:   { en: "Buy time. Let an independent firm establish the band.", pt: "Ganhar tempo. Deixar firma independente estabelecer a faixa." },
         verdict: { en: "Procedural delay", pt: "Adiamento procedural" },
         impacts: { reputation: -2, esg: 0, board: +4, transparency: +6 },
+        weights: { steward: 0, agent: 0, stakeholder: 0, monitor: 1, connector: 2 },
       },
     ],
   },
@@ -832,6 +913,7 @@ const SCENARIOS = [
         sub:   { en: "Q4 numbers look much better with this off the books.", pt: "Os números do 4T ficam muito melhores com isso fora do balanço." },
         verdict: { en: "Echoes of Enron", pt: "Ecos de Enron" },
         impacts: { reputation: -18, esg: -10, board: -22, transparency: -34 },
+        weights: { steward: -2, agent: 3, stakeholder: -1, monitor: -3, connector: 1 },
       },
       {
         id: "d2", tone: "positive",
@@ -839,6 +921,7 @@ const SCENARIOS = [
         sub:   { en: "Take the hit. Keep the financials honest.", pt: "Absorver o impacto. Manter os números honestos." },
         verdict: { en: "Conservative integrity", pt: "Integridade conservadora" },
         impacts: { reputation: +12, esg: +6, board: +20, transparency: +28 },
+        weights: { steward: 2, agent: -2, stakeholder: 1, monitor: 3, connector: -1 },
       },
       {
         id: "d3", tone: "negative",
@@ -846,6 +929,7 @@ const SCENARIOS = [
         sub:   { en: "Use the vehicle but expose its mechanics in the 20-F.", pt: "Usar o veículo mas explicitar a mecânica no 20-F." },
         verdict: { en: "Disclosed but fragile", pt: "Divulgado mas frágil" },
         impacts: { reputation: -4, esg: -2, board: -2, transparency: +4 },
+        weights: { steward: -1, agent: 1, stakeholder: -1, monitor: 1, connector: 1 },
       },
       {
         id: "d4", tone: "positive",
@@ -853,6 +937,7 @@ const SCENARIOS = [
         sub:   { en: "Operational fix instead of accounting fix.", pt: "Solução operacional ao invés de solução contábil." },
         verdict: { en: "Substance over form", pt: "Essência sobre forma" },
         impacts: { reputation: +6, esg: +8, board: +14, transparency: +16 },
+        weights: { steward: 2, agent: -1, stakeholder: 1, monitor: 2, connector: -1 },
       },
     ],
   },
@@ -884,6 +969,7 @@ const SCENARIOS = [
         sub:   { en: "Suspend the vote. Call a special meeting per Novo Mercado rules.", pt: "Suspender a votação. Convocar reunião especial conforme regras do Novo Mercado." },
         verdict: { en: "Fairness pillar honored", pt: "Pilar de equidade honrado" },
         impacts: { reputation: +12, esg: +6, board: +22, transparency: +20 },
+        weights: { steward: 1, agent: -2, stakeholder: 2, monitor: 3, connector: -1 },
       },
       {
         id: "d2", tone: "negative",
@@ -891,6 +977,7 @@ const SCENARIOS = [
         sub:   { en: "The controller will remember this loyalty.", pt: "O controlador vai se lembrar dessa lealdade." },
         verdict: { en: "Minority abuse", pt: "Abuso de minoritário" },
         impacts: { reputation: -16, esg: -8, board: -22, transparency: -28 },
+        weights: { steward: -2, agent: 2, stakeholder: -3, monitor: -3, connector: 3 },
       },
       {
         id: "d3", tone: "negative",
@@ -898,6 +985,7 @@ const SCENARIOS = [
         sub:   { en: "Compromise. Avoid the public process.", pt: "Acordar. Evitar o processo público." },
         verdict: { en: "Half-measure", pt: "Meio-caminho" },
         impacts: { reputation: -4, esg: -2, board: -8, transparency: -10 },
+        weights: { steward: 0, agent: 1, stakeholder: -1, monitor: -1, connector: 2 },
       },
       {
         id: "d4", tone: "positive",
@@ -905,6 +993,7 @@ const SCENARIOS = [
         sub:   { en: "Procedural rigor; full record for minorities and regulators.", pt: "Rigor procedural; registro completo para minoritários e regulador." },
         verdict: { en: "Procedural integrity", pt: "Integridade procedural" },
         impacts: { reputation: +8, esg: +4, board: +18, transparency: +24 },
+        weights: { steward: 1, agent: -1, stakeholder: 2, monitor: 3, connector: -1 },
       },
     ],
   },
@@ -955,6 +1044,8 @@ const TAKEOVER_CRISES = [
   },
 ];
 
+const ARCHETYPES = ["steward", "agent", "stakeholder", "monitor", "connector"];
+
 const PROFILE = {
   name: "Elena Marés",
   initials: "EM",
@@ -999,6 +1090,31 @@ function useLang() {
 
 const clamp = (v, lo = 0, hi = 100) => Math.max(lo, Math.min(hi, v));
 
+const EMPTY_PROFILE = () => ({ steward: 0, agent: 0, stakeholder: 0, monitor: 0, connector: 0 });
+
+function addWeights(profile, weights) {
+  if (!weights) return profile;
+  const out = { ...profile };
+  for (const a of ARCHETYPES) out[a] = (out[a] || 0) + (weights[a] || 0);
+  return out;
+}
+
+// Telemetry bars react to the weight vector — agent-aligned answers raise risk,
+// monitor/stakeholder-aligned answers strengthen transparency/ESG, steward strengthens reputation.
+// No right/wrong booleans drive scores anymore.
+function applyAnswerTelemetry(s, weights) {
+  const w = weights || {};
+  const agentPos = Math.max(0, w.agent || 0);
+  return {
+    ...s,
+    esg:          clamp(s.esg          + 2 * (w.stakeholder || 0) + 1 * (w.steward || 0)),
+    reputation:   clamp(s.reputation   + 2 * (w.steward || 0)     + 1 * (w.monitor || 0)     - 2 * agentPos),
+    risk:         clamp(s.risk         + 3 * agentPos             - 1 * (w.monitor || 0)),
+    transparency: clamp(s.transparency + 2 * (w.monitor || 0)     + 1 * (w.stakeholder || 0) - 2 * agentPos),
+    influence:    s.influence + 1,
+  };
+}
+
 // ============================================================
 // SUPABASE CLIENT + AUTH HELPERS
 // ============================================================
@@ -1012,6 +1128,7 @@ const SB = (() => {
 })();
 
 const SESSION_KEY = "gc_session";
+const PENDING_RUNS_KEY = "gc_pending_runs";
 
 const Auth = {
   load() {
@@ -1061,28 +1178,95 @@ const Auth = {
   },
   async saveRun(token, payload) {
     if (!SB) return { error: "config_missing" };
-    const { data, error } = await SB.rpc("save_run", {
-      p_token: token,
-      p_composite:    payload.composite,
-      p_esg:          payload.esg,
-      p_reputation:   payload.reputation,
-      p_transparency: payload.transparency,
-      p_risk:         payload.risk,
-      p_influence:    payload.influence,
-      p_accuracy_pct: payload.accuracy_pct,
-      p_archetype:    payload.archetype,
-      p_tier:         payload.tier,
-      p_lang:         payload.lang,
-    });
-    if (error) return { error: "network" };
-    if (data && data.error) return { error: data.error };
-    return { ok: true };
+    try {
+      const { data, error } = await SB.rpc("save_run", {
+        p_token: token,
+        p_composite:    payload.composite,
+        p_esg:          payload.esg,
+        p_reputation:   payload.reputation,
+        p_transparency: payload.transparency,
+        p_risk:         payload.risk,
+        p_influence:    payload.influence,
+        p_accuracy_pct: payload.accuracy_pct,
+        p_archetype:    payload.archetype,
+        p_tier:         payload.tier,
+        p_lang:         payload.lang,
+        p_profile:      payload.profile || null,
+      });
+      if (error) {
+        console.error("[save_run] supabase error:", error);
+        const msg = String(error.message || "").toLowerCase();
+        if (msg.includes("failed to fetch") || msg.includes("networkerror") ||
+            msg.includes("503") || msg.includes("coming up") || msg.includes("timeout")) {
+          return { error: "warming", details: msg };
+        }
+        return { error: "network", details: msg };
+      }
+      if (data && data.error) return { error: data.error };
+      return { ok: true };
+    } catch (e) {
+      console.error("[save_run] exception:", e);
+      return { error: "warming", details: String(e && e.message || e) };
+    }
   },
   async leaderboard(limit = 100) {
     if (!SB) return { error: "config_missing" };
     const { data, error } = await SB.rpc("leaderboard", { p_limit: limit });
     if (error) return { error: "network" };
     return { ok: true, rows: data || [] };
+  },
+};
+
+// ============================================================
+// SAVE QUEUE — offline / cold-start resilience
+// ============================================================
+// Runs that fail to save (because Supabase is warming up or the device
+// is offline) are queued in localStorage and retried later — on next App
+// mount, next Menu visit, or when navigator goes online.
+
+const MAX_PENDING_RUNS = 20;
+const MAX_ATTEMPTS_PER_RUN = 20;
+
+const SaveQueue = {
+  read() {
+    try {
+      const raw = localStorage.getItem(PENDING_RUNS_KEY);
+      const arr = raw ? JSON.parse(raw) : [];
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) { return []; }
+  },
+  write(arr) {
+    try { localStorage.setItem(PENDING_RUNS_KEY, JSON.stringify(arr)); } catch (e) {}
+  },
+  count() { return SaveQueue.read().length; },
+  enqueue(token, payload, errKind) {
+    const arr = SaveQueue.read();
+    if (arr.length >= MAX_PENDING_RUNS) arr.shift();  // drop oldest to cap memory
+    arr.push({
+      id: "run_" + Date.now() + "_" + Math.random().toString(36).slice(2, 6),
+      token, payload,
+      enqueued_at: new Date().toISOString(),
+      attempts: 0,
+      last_error: errKind || null,
+    });
+    SaveQueue.write(arr);
+  },
+  async flush() {
+    if (!SB) return { flushed: 0, remaining: SaveQueue.count() };
+    const arr = SaveQueue.read();
+    if (arr.length === 0) return { flushed: 0, remaining: 0 };
+    const remaining = [];
+    let flushed = 0;
+    for (const entry of arr) {
+      entry.attempts = (entry.attempts || 0) + 1;
+      const res = await Auth.saveRun(entry.token, entry.payload);
+      if (res.ok) { flushed++; continue; }
+      if (res.error === "invalid_session") continue;  // can't re-attribute — drop
+      entry.last_error = res.error || "network";
+      if (entry.attempts < MAX_ATTEMPTS_PER_RUN) remaining.push(entry);
+    }
+    SaveQueue.write(remaining);
+    return { flushed, remaining: remaining.length };
   },
 };
 
@@ -1514,7 +1698,8 @@ function Landing({ go, isMobile, lang, setLang, session, onLogin, onLogout }) {
 
 const TOUR_FLAG_KEY = "gc_tour_seen";
 
-function Menu({ go, profile, scores, isMobile, isTablet, onTakeover, lang, setLang, session, onLogin, onLogout }) {
+function Menu({ go, identity, scores, isMobile, isTablet, onTakeover, lang, setLang, session, onLogin, onLogout }) {
+  const profile = identity;  // alias: Menu only uses .name and .initials of the user, never the archetype profile
   const [showTour, setShowTour] = useState(false);
 
   // Auto-open tour on first visit (per user, persisted in localStorage)
@@ -1526,6 +1711,12 @@ function Menu({ go, profile, scores, isMobile, isTablet, onTakeover, lang, setLa
     const id = setTimeout(() => setShowTour(true), 650);
     return () => clearTimeout(id);
   }, [session]);
+
+  // Catch-up flush of any runs saved offline / during cold start
+  const [pendingFlushedCount, setPendingFlushedCount] = useState(0);
+  useEffect(() => {
+    SaveQueue.flush().then(r => { if (r.flushed > 0) setPendingFlushedCount(r.flushed); });
+  }, []);
 
   const closeTour = (reason) => {
     setShowTour(false);
@@ -1718,13 +1909,16 @@ function Menu({ go, profile, scores, isMobile, isTablet, onTakeover, lang, setLa
 // GAME / QUIZ
 // ============================================================
 
-function Game({ go, scores, setScores, isMobile, isTablet, lang, setLang, session, onLogin, onLogout }) {
+function Game({ go, scores, setScores, isMobile, isTablet, lang, setLang, session, onLogin, onLogout,
+                 profile, setProfile, questionsAnswered, setQuestionsAnswered, resetRun }) {
+  // Fresh run on entering Game — clears profile, scores, and answer log
+  useEffect(() => { if (resetRun) resetRun(); /* eslint-disable-next-line */ }, []);
+
   const [qIdx, setQIdx] = useState(0);
   const q = QUESTIONS[qIdx % QUESTIONS.length];
   const [picked, setPicked] = useState(null);
   const [time, setTime] = useState(30);
   const [revealed, setRevealed] = useState(false);
-  const [correctCount, setCorrectCount] = useState(0);
 
   useEffect(() => {
     if (revealed) return;
@@ -1738,29 +1932,14 @@ function Game({ go, scores, setScores, isMobile, isTablet, lang, setLang, sessio
     setPicked(k);
     setRevealed(true);
     const opt = q.options.find(o => o.k === k);
-    if (opt.correct) {
-      setCorrectCount(c => c + 1);
-      setScores(s => ({
-        ...s,
-        esg:          clamp(s.esg + 6),
-        reputation:   clamp(s.reputation + 4),
-        risk:         clamp(s.risk - 5),
-        transparency: clamp(s.transparency + 4),
-        influence:    s.influence + 1,
-      }));
-    } else {
-      setScores(s => ({
-        ...s,
-        esg:          clamp(s.esg - 3),
-        reputation:   clamp(s.reputation - 5),
-        risk:         clamp(s.risk + 8),
-        transparency: clamp(s.transparency - 2),
-      }));
-    }
+    // Silent profile accumulation + tone-neutral telemetry shift
+    setProfile(p => addWeights(p, opt.weights));
+    setScores(s => applyAnswerTelemetry(s, opt.weights));
+    setQuestionsAnswered(arr => [...arr, { qId: q.id, optionK: k, weights: opt.weights }]);
   };
 
   const next = () => {
-    if (qIdx >= QUESTIONS.length - 1) { go("results", { accuracy: correctCount / QUESTIONS.length }); return; }
+    if (qIdx >= QUESTIONS.length - 1) { go("results"); return; }
     setQIdx(i => i + 1);
     setPicked(null);
     setRevealed(false);
@@ -1768,7 +1947,7 @@ function Game({ go, scores, setScores, isMobile, isTablet, lang, setLang, sessio
   };
 
   const timePct = (time / 30) * 100;
-  const pickedNote = picked ? pick(q.options.find(o => o.k === picked).note, lang) : pick(q.options.find(o => o.correct).note, lang);
+  const answeredCount = (questionsAnswered || []).length;
 
   return (
     <div style={{ background: "var(--paper)", minHeight: "100%", display: "flex", flexDirection: "column" }}>
@@ -1851,28 +2030,27 @@ function Game({ go, scores, setScores, isMobile, isTablet, lang, setLang, sessio
           <div style={{ display: "grid", gap: 1, background: "var(--rule)", border: "1px solid var(--rule)", marginBottom: 20 }}>
             {q.options.map((o) => {
               const isPicked = picked === o.k;
-              const showCorrect = revealed && o.correct;
-              const showWrong = revealed && isPicked && !o.correct;
-              const baseBg = "var(--paper)";
-              const bg = showCorrect ? "var(--ink)" : showWrong ? "#f6e9e6" : baseBg;
-              const fg = showCorrect ? "var(--paper)" : "var(--ink)";
+              const dim = revealed && !isPicked;
+              const baseBg = isPicked ? "var(--ink)" : "var(--paper)";
+              const baseFg = isPicked ? "var(--paper)" : "var(--ink)";
               return (
                 <button
                   key={o.k}
                   onClick={() => onPick(o.k)}
                   disabled={revealed}
                   style={{
-                    background: bg, color: fg,
+                    background: baseBg, color: baseFg,
+                    opacity: dim ? 0.45 : 1,
                     padding: isMobile ? "16px 18px" : "20px 24px",
                     textAlign: "left",
                     display: "grid",
                     gridTemplateColumns: isMobile ? "32px 1fr" : "44px 1fr auto",
                     gap: isMobile ? 14 : 18, alignItems: "center",
                     cursor: revealed ? "default" : "pointer",
-                    transition: "background 200ms ease, color 200ms ease",
+                    transition: "background 200ms ease, color 200ms ease, opacity 280ms ease",
                   }}
                   onMouseOver={e => { if (!revealed) { e.currentTarget.style.background = "var(--ink)"; e.currentTarget.style.color = "var(--paper)"; } }}
-                  onMouseOut={e =>  { if (!revealed) { e.currentTarget.style.background = baseBg; e.currentTarget.style.color = "var(--ink)"; } }}
+                  onMouseOut={e =>  { if (!revealed) { e.currentTarget.style.background = baseBg; e.currentTarget.style.color = baseFg; } }}
                 >
                   <span style={{
                     fontFamily: "var(--serif)",
@@ -1886,7 +2064,7 @@ function Game({ go, scores, setScores, isMobile, isTablet, lang, setLang, sessio
                   }}>{pick(o.text, lang)}</span>
                   {!isMobile && (
                     <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, opacity: 0.55 }}>
-                      {showCorrect ? t("opt.correct", lang) : showWrong ? t("opt.incorrect", lang) : isPicked ? t("opt.selected", lang) : t("opt.select", lang)}
+                      {isPicked ? t("opt.recorded", lang) : t("opt.select", lang)}
                     </span>
                   )}
                 </button>
@@ -1903,13 +2081,8 @@ function Game({ go, scores, setScores, isMobile, isTablet, lang, setLang, sessio
               gap: isMobile ? 14 : 24, alignItems: "center",
               background: "var(--paper-2)",
             }}>
-              <div>
-                <div style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)", marginBottom: 6 }}>
-                  {t("game.commentary", lang, { citation: pick(q.citation, lang) })}
-                </div>
-                <div style={{ fontFamily: "var(--serif)", fontSize: isMobile ? 16 : 18, lineHeight: 1.4, fontStyle: "italic", color: "var(--ink-2)" }}>
-                  "{pickedNote}"
-                </div>
+              <div style={{ fontFamily: "var(--serif)", fontSize: isMobile ? 15 : 17, lineHeight: 1.4, fontStyle: "italic", color: "var(--ink-2)" }}>
+                {t("game.recordedHint", lang)}
               </div>
               <PillButton onClick={next}>
                 {qIdx >= QUESTIONS.length - 1 ? t("game.viewResults", lang) : t("game.nextMove", lang)}
@@ -1940,15 +2113,14 @@ function Game({ go, scores, setScores, isMobile, isTablet, lang, setLang, sessio
           <Rule />
 
           <div>
-            <div style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)", marginBottom: 12 }}>{t("game.boardStanding", lang)}</div>
+            <div style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)", marginBottom: 12 }}>{t("game.answersRecorded", lang)}</div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
               <span style={{ fontFamily: "var(--serif)", fontSize: 44, fontWeight: 500, letterSpacing: -1.5, lineHeight: 1 }}>
-                {correctCount}<span style={{ color: "var(--silver)" }}>/</span>{qIdx + (revealed ? 1 : 0)}
+                {answeredCount}<span style={{ color: "var(--silver)" }}>/</span>{QUESTIONS.length}
               </span>
-              <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)" }}>{t("game.accuracy", lang)}</span>
             </div>
-            <div style={{ fontFamily: "var(--sans)", fontSize: 12, color: "var(--ink-2)", lineHeight: 1.5 }}>
-              {correctCount / Math.max(1, qIdx + (revealed ? 1 : 0)) >= 0.8 ? t("game.onPace", lang) : t("game.notOnPace", lang)}
+            <div style={{ fontFamily: "var(--sans)", fontSize: 12, color: "var(--ink-2)", lineHeight: 1.5, fontStyle: "italic" }}>
+              {t("game.recordedHint", lang)}
             </div>
           </div>
 
@@ -1974,7 +2146,11 @@ function Game({ go, scores, setScores, isMobile, isTablet, lang, setLang, sessio
 // SCENARIO / CRISIS
 // ============================================================
 
-function Scenario({ go, scores, setScores, isMobile, isTablet, lang, setLang, session, onLogin, onLogout }) {
+function Scenario({ go, scores, setScores, isMobile, isTablet, lang, setLang, session, onLogin, onLogout,
+                     profile, setProfile, questionsAnswered, setQuestionsAnswered, resetRun }) {
+  // Fresh run on entering Scenario — clears profile, scores, and answer log
+  useEffect(() => { if (resetRun) resetRun(); /* eslint-disable-next-line */ }, []);
+
   const [crisisIdx, setCrisisIdx] = useState(0);
   const sc = SCENARIOS[crisisIdx % SCENARIOS.length];
   const [chosen, setChosen] = useState(null);
@@ -1994,6 +2170,9 @@ function Scenario({ go, scores, setScores, isMobile, isTablet, lang, setLang, se
       risk:         clamp(s.risk         - d.impacts.board / 2),
       influence:    s.influence + (d.tone === "positive" ? 1 : 0),
     }));
+    // Silent profile accumulation from the decision's weight vector
+    if (setProfile)         setProfile(p => addWeights(p, d.weights));
+    if (setQuestionsAnswered) setQuestionsAnswered(arr => [...arr, { qId: sc.id, optionK: d.id, weights: d.weights }]);
   };
 
   const advance = () => {
@@ -2239,7 +2418,7 @@ function Scenario({ go, scores, setScores, isMobile, isTablet, lang, setLang, se
 // RESULTS
 // ============================================================
 
-function Results({ go, scores, profile, accuracy, isMobile, lang, setLang, session, onLogin, onLogout }) {
+function Results({ go, scores, identity, profile, questionsAnswered, accuracy, isMobile, lang, setLang, session, onLogin, onLogout, resetRun }) {
   const composite = Math.round((scores.esg + scores.reputation + scores.transparency + (100 - scores.risk)) / 4);
   const tierKey =
     composite >= 88 ? "tier.distinguished" :
@@ -2248,24 +2427,28 @@ function Results({ go, scores, profile, accuracy, isMobile, lang, setLang, sessi
     composite >= 45 ? "tier.provisional" :
     "tier.censured";
 
-  const archetypeKey =
-    composite >= 75 && (scores.transparency + scores.esg) / 2 >= 65 ? "arch.steward" :
-    composite < 50 || (scores.reputation < 35 && scores.transparency < 35) ? "arch.agent" :
-    scores.transparency >= 70 ? "arch.indDirector" :
-    "arch.balanced";
+  // Archetype now derived from the silent weight profile, not from scores.
+  // Tie-breaker: if winner − runner-up < 2 points, return "balanced".
+  const { archetypeKey, profileEntries, profileDelta } = useMemo(() => {
+    const safeProfile = profile || EMPTY_PROFILE();
+    const entries = ARCHETYPES.map(a => [a, safeProfile[a] || 0]);
+    entries.sort((a, b) => b[1] - a[1]);
+    const winner = entries[0];
+    const runnerUp = entries[1] || [null, 0];
+    const delta = winner[1] - runnerUp[1];
+    const key = (winner[1] <= 0 || delta < 2) ? "arch.balanced" : `arch.${winner[0]}`;
+    return { archetypeKey: key, profileEntries: entries, profileDelta: delta };
+  }, [profile]);
 
-  // Save run on mount, once
-  const [saveStatus, setSaveStatus] = useState(SB ? "saving" : (window.GC_CONFIG ? "notConfigured" : "notConfigured"));
+  // Save run on mount, once. On warming/network error, enqueue for later retry.
+  const [saveStatus, setSaveStatus] = useState(SB ? "saving" : "notConfigured");
+  const [pendingCount, setPendingCount] = useState(SaveQueue.count());
   const savedRef = useRef(false);
-  useEffect(() => {
-    if (savedRef.current) return;
-    savedRef.current = true;
-    if (!SB || !session || !session.token) {
-      setSaveStatus(SB ? null : "notConfigured");
-      return;
-    }
+  const lastPayloadRef = useRef(null);
+
+  const buildPayload = useCallback(() => {
     const accuracyPct = accuracy != null ? Math.round(accuracy * 100) : null;
-    Auth.saveRun(session.token, {
+    return {
       composite,
       esg:          Math.round(scores.esg),
       reputation:   Math.round(scores.reputation),
@@ -2276,10 +2459,47 @@ function Results({ go, scores, profile, accuracy, isMobile, lang, setLang, sessi
       archetype:    t(archetypeKey, "en"),
       tier:         t(tierKey, "en"),
       lang,
-    }).then(res => {
-      setSaveStatus(res.error ? "error" : "saved");
+      profile:      profile || EMPTY_PROFILE(),
+    };
+  }, [composite, scores, accuracy, archetypeKey, tierKey, lang, profile]);
+
+  useEffect(() => {
+    if (savedRef.current) return;
+    savedRef.current = true;
+    if (!SB || !session || !session.token) {
+      setSaveStatus(SB ? null : "notConfigured");
+      return;
+    }
+    const payload = buildPayload();
+    lastPayloadRef.current = payload;
+    setSaveStatus("saving");
+    Auth.saveRun(session.token, payload).then(res => {
+      if (res.ok) {
+        setSaveStatus("saved");
+        // opportunistic catch-up of any other pending runs
+        SaveQueue.flush().then(r => setPendingCount(r.remaining));
+      } else if (res.error === "warming" || res.error === "network") {
+        SaveQueue.enqueue(session.token, payload, res.error);
+        setPendingCount(SaveQueue.count());
+        setSaveStatus(res.error);
+      } else {
+        // invalid_session, config_missing, etc.
+        setSaveStatus("error");
+      }
     });
   }, []);
+
+  const retrySave = useCallback(async () => {
+    if (!session || !session.token) return;
+    setSaveStatus("saving");
+    // Ensure the current run is in the queue
+    if (lastPayloadRef.current && SaveQueue.count() === 0) {
+      SaveQueue.enqueue(session.token, lastPayloadRef.current, "manual");
+    }
+    const r = await SaveQueue.flush();
+    setPendingCount(r.remaining);
+    setSaveStatus(r.remaining === 0 ? "saved" : "warming");
+  }, [session]);
 
   const breakdown = [
     { code: "01", labelKey: "bd.composite",    value: composite,           max: 100 },
@@ -2312,18 +2532,33 @@ function Results({ go, scores, profile, accuracy, isMobile, lang, setLang, sessi
         <div style={{
           padding: isMobile ? "8px 18px" : "10px 40px",
           borderBottom: "1px solid var(--rule)",
-          background: saveStatus === "saved" ? "#eaf1ec" : saveStatus === "error" || saveStatus === "notConfigured" ? "#f6e9e6" : "var(--paper-2)",
+          background: saveStatus === "saved" ? "#eaf1ec"
+                    : (saveStatus === "warming") ? "#fff8e1"
+                    : (saveStatus === "error" || saveStatus === "notConfigured") ? "#f6e9e6"
+                    : "var(--paper-2)",
           fontFamily: "var(--mono)",
           fontSize: 10, letterSpacing: 2, textTransform: "uppercase",
-          color: saveStatus === "saved" ? "var(--positive)" : saveStatus === "error" || saveStatus === "notConfigured" ? "var(--warning)" : "var(--silver-2)",
-          display: "flex", justifyContent: "space-between", alignItems: "center",
+          color:    saveStatus === "saved" ? "var(--positive)"
+                  : saveStatus === "warming" ? "#7a5a00"
+                  : (saveStatus === "error" || saveStatus === "notConfigured") ? "var(--warning)"
+                  : "var(--silver-2)",
+          display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap",
         }}>
-          <span>
-            {saveStatus === "saving" && `◇ ${t("save.saving", lang)}`}
-            {saveStatus === "saved" && `✓ ${t("save.saved", lang)}`}
-            {saveStatus === "error" && `△ ${t("save.error", lang)}`}
+          <span style={{ flex: 1, minWidth: 0 }}>
+            {saveStatus === "saving"        && `◇ ${t("save.saving", lang)}`}
+            {saveStatus === "saved"         && `✓ ${t("save.saved", lang)}${pendingCount > 0 ? ` · ${t("save.queued", lang, { n: pendingCount })}` : ""}`}
+            {saveStatus === "warming"       && `△ ${t("save.warming", lang)}${pendingCount > 0 ? ` · ${t("save.queued", lang, { n: pendingCount })}` : ""}`}
+            {saveStatus === "error"         && `△ ${t("save.error", lang)}`}
             {saveStatus === "notConfigured" && `△ ${t("save.notConfigured", lang)}`}
           </span>
+          {(saveStatus === "warming" || saveStatus === "error") && (
+            <button onClick={retrySave} style={{
+              fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, textTransform: "uppercase",
+              color: "inherit", textDecoration: "underline", cursor: "pointer",
+            }}>
+              ↻ {t("save.retry", lang)}
+            </button>
+          )}
           {saveStatus === "saved" && (
             <button onClick={() => go("leader")} style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: "var(--positive)", textDecoration: "underline" }}>
               → {t("nav.leader", lang)}
@@ -2368,13 +2603,25 @@ function Results({ go, scores, profile, accuracy, isMobile, lang, setLang, sessi
             </span>
           </div>
 
+          <div style={{ marginTop: 12, fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)", textTransform: "uppercase" }}>
+            {t(`${archetypeKey}.theory`, lang)}
+          </div>
           <p style={{
-            marginTop: isMobile ? 22 : 32, marginBottom: 0,
+            marginTop: 8, marginBottom: 0,
+            fontFamily: "var(--sans)",
+            fontSize: 13, lineHeight: 1.55,
+            color: "var(--ink-2)", maxWidth: 540,
+          }}>
+            {t(`${archetypeKey}.desc`, lang)}
+          </p>
+
+          <p style={{
+            marginTop: isMobile ? 22 : 28, marginBottom: 0,
             fontFamily: "var(--serif)", fontStyle: "italic",
             fontSize: isMobile ? 18 : 22, lineHeight: 1.4,
             color: "var(--ink-2)", maxWidth: 540, textWrap: "pretty",
           }}>
-            {t("res.verdict", lang, { name: profile.name.split(" ")[0] })}
+            {t("res.verdict", lang, { name: identity.name.split(" ")[0] })}
           </p>
           <div style={{ marginTop: 16, fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)", textTransform: "uppercase" }}>
             {t("res.auditCommittee", lang)}
@@ -2387,9 +2634,9 @@ function Results({ go, scores, profile, accuracy, isMobile, lang, setLang, sessi
             gap: 0, border: "1px solid var(--rule)",
           }}>
             <div style={{ padding: "14px 18px", borderRight: !isMobile ? "1px solid var(--rule)" : "none", borderBottom: isMobile ? "1px solid var(--rule)" : "none" }}>
-              <div style={{ fontFamily: "var(--mono)", fontSize: 9, letterSpacing: 2, color: "var(--silver-2)" }}>{t("res.objAccuracy", lang)}</div>
+              <div style={{ fontFamily: "var(--mono)", fontSize: 9, letterSpacing: 2, color: "var(--silver-2)" }}>{t("res.objDecisions", lang)}</div>
               <div style={{ fontFamily: "var(--serif)", fontSize: 22, fontWeight: 500, marginTop: 4 }}>
-                {accuracyVal != null ? `${accuracyVal}%` : "—"} <span style={{ color: "var(--silver)", fontSize: 14 }}>/ 80%</span>
+                {(questionsAnswered || []).length}
               </div>
             </div>
             <div style={{ padding: "14px 18px", borderRight: !isMobile ? "1px solid var(--rule)" : "none", borderBottom: isMobile ? "1px solid var(--rule)" : "none" }}>
@@ -2430,6 +2677,54 @@ function Results({ go, scores, profile, accuracy, isMobile, lang, setLang, sessi
 
           <div style={{ display: "grid", gap: 22 }}>
             {breakdown.map(b => <Meter key={b.code} code={b.code} label={t(b.labelKey, lang)} value={b.value} max={b.max} tone={b.tone} />)}
+          </div>
+
+          <Rule />
+
+          {/* PROFILE DISTRIBUTION — 5-archetype bars, positive/negative from center */}
+          <div>
+            <div style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)", marginBottom: 14 }}>{t("res.profileBreakdown", lang)}</div>
+            <div style={{ display: "grid", gap: 10 }}>
+              {(() => {
+                const maxAbs = Math.max(1, ...ARCHETYPES.map(a => Math.abs((profile || {})[a] || 0)));
+                const winnerKey = archetypeKey.replace("arch.", "");
+                return ARCHETYPES.map(a => {
+                  const v = (profile || {})[a] || 0;
+                  const pct = (Math.abs(v) / maxAbs) * 50;
+                  const isWinner = a === winnerKey;
+                  return (
+                    <div key={a} style={{ display: "grid", gridTemplateColumns: isMobile ? "100px 1fr 36px" : "130px 1fr 40px", gap: 10, alignItems: "center" }}>
+                      <span style={{
+                        fontFamily: "var(--sans)", fontSize: 11, letterSpacing: 0.4,
+                        fontWeight: isWinner ? 700 : 400,
+                        color: isWinner ? "var(--ink)" : "var(--ink-2)",
+                        whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
+                      }}>
+                        {t(`arch.${a}`, lang)}
+                      </span>
+                      <div style={{ position: "relative", height: 4, background: "var(--rule)" }}>
+                        <div style={{ position: "absolute", left: "50%", top: -3, bottom: -3, width: 1, background: "var(--silver-2)" }} />
+                        <div style={{
+                          position: "absolute",
+                          left: v >= 0 ? "50%" : `${50 - pct}%`,
+                          width: `${pct}%`, height: "100%",
+                          background: isWinner ? "var(--ink)" : v < 0 ? "var(--warning)" : "var(--silver-2)",
+                          transition: "left 600ms cubic-bezier(.2,.7,.2,1), width 600ms cubic-bezier(.2,.7,.2,1)",
+                        }} />
+                      </div>
+                      <span style={{
+                        fontFamily: "var(--mono)", fontSize: 11, letterSpacing: 0.5,
+                        textAlign: "right",
+                        color: v < 0 ? "var(--warning)" : isWinner ? "var(--ink)" : "var(--silver-2)",
+                        fontWeight: isWinner ? 600 : 400,
+                      }}>
+                        {v > 0 ? "+" : ""}{v}
+                      </span>
+                    </div>
+                  );
+                });
+              })()}
+            </div>
           </div>
 
           <Rule />
@@ -2483,6 +2778,71 @@ function Results({ go, scores, profile, accuracy, isMobile, lang, setLang, sessi
               <div style={{ position: "absolute", left: 8, top: 6, fontFamily: "var(--mono)", fontSize: 9, color: "var(--silver-2)", letterSpacing: 1 }}>{t("res.hostile", lang)}</div>
               <div style={{ position: "absolute", right: 8, top: 6, fontFamily: "var(--mono)", fontSize: 9, color: "var(--silver-2)", letterSpacing: 1 }}>{t("res.favorable", lang)}</div>
             </div>
+          </div>
+
+          <Rule />
+
+          {/* FURTHER READING — five archetype anchors */}
+          <div>
+            <div style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)", marginBottom: 14 }}>
+              {t("res.furtherReading", lang)}
+            </div>
+            <div style={{ display: "grid", gap: 14 }}>
+              {ARCHETYPES.map(a => {
+                const winnerKey = archetypeKey.replace("arch.", "");
+                const isWinner = a === winnerKey;
+                return (
+                  <div key={a} style={{
+                    paddingLeft: 14,
+                    borderLeft: `2px solid ${isWinner ? "var(--ink)" : "var(--rule)"}`,
+                  }}>
+                    <div style={{
+                      fontFamily: "var(--serif)",
+                      fontSize: 16, fontWeight: 500, letterSpacing: -0.2,
+                      color: isWinner ? "var(--ink)" : "var(--ink-2)",
+                      fontStyle: isWinner ? "normal" : "italic",
+                    }}>
+                      {t(`arch.${a}`, lang)}
+                    </div>
+                    <div style={{
+                      fontFamily: "var(--sans)",
+                      fontSize: 11, lineHeight: 1.5,
+                      color: "var(--silver-2)",
+                      marginTop: 2,
+                    }}>
+                      {t(`arch.${a}.theory`, lang)}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            {(questionsAnswered && questionsAnswered.length > 0) && (
+              <details style={{ marginTop: 18 }}>
+                <summary style={{
+                  fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2,
+                  color: "var(--silver-2)", textTransform: "uppercase",
+                  cursor: "pointer", padding: "4px 0",
+                }}>
+                  {t("res.sources", lang)} · {questionsAnswered.length}
+                </summary>
+                <div style={{ marginTop: 8, display: "grid", gap: 6 }}>
+                  {questionsAnswered.map((qa, i) => {
+                    // Look up citation for this question
+                    const q = QUESTIONS.find(x => x.id === qa.qId);
+                    const sc = SCENARIOS.find(x => x.id === qa.qId);
+                    const cite = q ? pick(q.citation, lang) : sc ? pick(sc.title, lang) : qa.qId;
+                    return (
+                      <div key={i} style={{ fontFamily: "var(--sans)", fontSize: 11, color: "var(--ink-2)", lineHeight: 1.5 }}>
+                        <span style={{ fontFamily: "var(--mono)", fontSize: 9, color: "var(--silver-2)", marginRight: 6 }}>
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        {cite}
+                      </div>
+                    );
+                  })}
+                </div>
+              </details>
+            )}
           </div>
 
           <div style={{ marginTop: "auto", fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)", textTransform: "uppercase", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
@@ -3382,9 +3742,13 @@ function ProtoNav({ screen, go, isMobile, lang, session }) {
 
 const PROTECTED_SCREENS = new Set(["menu", "game", "scenario", "results", "leader"]);
 
+const INITIAL_SCORES = { esg: 64, reputation: 72, transparency: 58, risk: 36, influence: 0 };
+
 function App() {
   const [screen, setScreen] = useState("landing");
-  const [scores, setScores] = useState({ esg: 64, reputation: 72, transparency: 58, risk: 36, influence: 0 });
+  const [scores, setScores] = useState(INITIAL_SCORES);
+  const [profile, setProfile] = useState(EMPTY_PROFILE());
+  const [questionsAnswered, setQuestionsAnswered] = useState([]);  // [{ qId, optionK, weights }] in order — used for Further Reading
   const [accuracy, setAccuracy] = useState(null);
   const [showTakeover, setShowTakeover] = useState(false);
   const [lang, setLang] = useLang();
@@ -3393,6 +3757,13 @@ function App() {
   const [pendingNav, setPendingNav] = useState(null);
 
   const vp = useViewport();
+
+  const resetRun = useCallback(() => {
+    setScores(INITIAL_SCORES);
+    setProfile(EMPTY_PROFILE());
+    setQuestionsAnswered([]);
+    setAccuracy(null);
+  }, []);
 
   const go = useCallback((s, p = null) => {
     if (PROTECTED_SCREENS.has(s) && !session) {
@@ -3455,16 +3826,39 @@ function App() {
     return () => window.removeEventListener("keydown", onKey);
   }, [session]);
 
-  const screenProps = { go, isMobile: vp.isMobile, isTablet: vp.isTablet, lang, setLang, session, onLogin, onLogout };
+  // Flush pending runs on app mount + when the browser reconnects
+  useEffect(() => {
+    SaveQueue.flush();
+    const onOnline = () => SaveQueue.flush();
+    window.addEventListener("online", onOnline);
+    return () => window.removeEventListener("online", onOnline);
+  }, []);
+
+  const identity = useMemo(() => {
+    if (!session) return PROFILE;
+    const full = session.user.full_name;
+    return {
+      name: full,
+      initials: full.split(/\s+/).map(s => s[0]).slice(0, 2).join("").toUpperCase(),
+    };
+  }, [session]);
+
+  const screenProps = {
+    go, isMobile: vp.isMobile, isTablet: vp.isTablet, lang, setLang,
+    session, onLogin, onLogout,
+    profile, setProfile,
+    questionsAnswered, setQuestionsAnswered,
+    resetRun,
+  };
 
   return (
     <div style={{ minHeight: "100%", position: "relative" }} lang={lang}>
       <div style={{ minHeight: "100%" }}>
         {screen === "landing"  && <Landing  {...screenProps} />}
-        {screen === "menu"     && <Menu     {...screenProps} profile={session ? { name: session.user.full_name, initials: (session.user.full_name.split(/\s+/).map(s=>s[0]).slice(0,2).join("").toUpperCase()) } : PROFILE} scores={scores} onTakeover={onTakeover} />}
+        {screen === "menu"     && <Menu     {...screenProps} identity={identity} scores={scores} onTakeover={onTakeover} />}
         {screen === "game"     && <Game     {...screenProps} scores={scores} setScores={setScores} />}
         {screen === "scenario" && <Scenario {...screenProps} scores={scores} setScores={setScores} />}
-        {screen === "results"  && <Results  {...screenProps} scores={scores} profile={session ? { name: session.user.full_name } : PROFILE} accuracy={accuracy} />}
+        {screen === "results"  && <Results  {...screenProps} scores={scores} identity={identity} accuracy={accuracy} />}
         {screen === "leader"   && <Leaderboard {...screenProps} />}
       </div>
 

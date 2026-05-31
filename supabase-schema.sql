@@ -61,8 +61,12 @@ create table if not exists runs (
   archetype     text,
   tier          text,
   lang          text not null default 'en' check (lang in ('en','pt')),
+  profile       jsonb,                            -- archetype weight vector { steward, agent, stakeholder, monitor, connector }
   played_at     timestamptz not null default now()
 );
+
+-- Idempotent migration for existing installations (added in M1)
+alter table runs add column if not exists profile jsonb;
 
 create index if not exists idx_runs_user_score on runs(user_id, composite desc);
 create index if not exists idx_sessions_user   on sessions(user_id);
@@ -163,6 +167,10 @@ end $$;
 
 -- ─── SAVE RUN ───────────────────────────────────────────────
 
+-- Drop the previous overload (without p_profile) so PostgREST has a single
+-- save_run signature to resolve. Safe to run multiple times.
+drop function if exists save_run(uuid, int, int, int, int, int, int, int, text, text, text);
+
 create or replace function save_run(
   p_token         uuid,
   p_composite     int,
@@ -174,7 +182,8 @@ create or replace function save_run(
   p_accuracy_pct  int,
   p_archetype     text,
   p_tier          text,
-  p_lang          text
+  p_lang          text,
+  p_profile       jsonb default null
 )
 returns json
 language plpgsql
@@ -195,10 +204,10 @@ begin
 
   insert into runs (
     user_id, composite, esg, reputation, transparency, risk,
-    influence, accuracy_pct, archetype, tier, lang
+    influence, accuracy_pct, archetype, tier, lang, profile
   ) values (
     v_user_id, p_composite, p_esg, p_reputation, p_transparency, p_risk,
-    p_influence, p_accuracy_pct, p_archetype, p_tier, coalesce(p_lang, 'en')
+    p_influence, p_accuracy_pct, p_archetype, p_tier, coalesce(p_lang, 'en'), p_profile
   )
   returning id into v_run_id;
 
@@ -284,14 +293,14 @@ end $$;
 
 revoke all on function register_user(text, text, text, text)                                                from public;
 revoke all on function login_user(text, text)                                                               from public;
-revoke all on function save_run(uuid, int, int, int, int, int, int, int, text, text, text)                  from public;
+revoke all on function save_run(uuid, int, int, int, int, int, int, int, text, text, text, jsonb)           from public;
 revoke all on function leaderboard(int)                                                                     from public;
 revoke all on function my_runs(uuid, int)                                                                   from public;
 revoke all on function logout(uuid)                                                                         from public;
 
 grant execute on function register_user(text, text, text, text)                                             to anon, authenticated;
 grant execute on function login_user(text, text)                                                            to anon, authenticated;
-grant execute on function save_run(uuid, int, int, int, int, int, int, int, text, text, text)               to anon, authenticated;
+grant execute on function save_run(uuid, int, int, int, int, int, int, int, text, text, text, jsonb)        to anon, authenticated;
 grant execute on function leaderboard(int)                                                                  to anon, authenticated;
 grant execute on function my_runs(uuid, int)                                                                to anon, authenticated;
 grant execute on function logout(uuid)                                                                      to anon, authenticated;
