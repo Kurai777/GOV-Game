@@ -93,7 +93,7 @@ const STRINGS = {
   "mode.multi.label":         { en: "Boardroom",                               pt: "Conselho ao Vivo" },
   "mode.multi.desc":          { en: "Live multiplayer. Seat at a virtual table of four. Speak, vote, defend.",
                                 pt: "Multijogador ao vivo. Cadeira em mesa virtual de quatro. Fale, vote, defenda." },
-  "mode.multi.meta":          { en: "Coming soon",                              pt: "Em breve" },
+  "mode.multi.meta":          { en: "Live · multiplayer",                       pt: "Ao vivo · multijogador" },
   "mode.esg.label":           { en: "ESG Challenge",                           pt: "Desafio ESG" },
   "mode.esg.desc":            { en: "Sustainability-weighted decisions across one fiscal year of pressure.",
                                 pt: "Decisões com peso de sustentabilidade ao longo de um ano fiscal sob pressão." },
@@ -360,6 +360,77 @@ const STRINGS = {
   "tour.takeover.title":   { en: "Hostile Takeover",                             pt: "Aquisição Hostil" },
   "tour.takeover.body":    { en: "Earn influence points by answering correctly and choosing prudent moves. Spend two to spin the wheel — a random external crisis hits your scores. High-risk, high-flavor.",
                              pt: "Ganhe pontos de influência respondendo certo e escolhendo lances prudentes. Gaste dois para girar a roleta — uma crise externa aleatória atinge suas notas. Alto risco, alto sabor." },
+
+  // ── LIVE MODE ──
+  "live.entry.section":        { en: "II — LIVE BOARDROOM",                                pt: "II — CONSELHO AO VIVO" },
+  "live.entry.titleA":         { en: "Live",                                               pt: "Conselho" },
+  "live.entry.titleB":         { en: "Boardroom.",                                         pt: "Ao Vivo." },
+  "live.entry.blurb":          { en: "A synchronized table for two or more directors. One host opens the room, players join with a six-character code.",
+                                 pt: "Uma mesa sincronizada para dois ou mais conselheiros. Um anfitrião abre a sala, os jogadores entram com um código de seis caracteres." },
+  "live.entry.create":         { en: "Create Room →",                                      pt: "Criar Sala →" },
+  "live.entry.join":           { en: "Join Room →",                                        pt: "Entrar em Sala →" },
+  "live.entry.back":           { en: "← Lobby",                                            pt: "← Lobby" },
+
+  "live.join.title":           { en: "Enter the code.",                                    pt: "Digite o código." },
+  "live.join.blurb":           { en: "Six characters. Letters and digits. Share-screen with the host.",
+                                 pt: "Seis caracteres. Letras e números. Compartilhado em tela pelo anfitrião." },
+  "live.join.placeholder":     { en: "K4P9X2",                                             pt: "K4P9X2" },
+  "live.join.cta":             { en: "Take a seat →",                                      pt: "Tomar um assento →" },
+  "live.join.connecting":      { en: "Connecting…",                                        pt: "Conectando…" },
+  "live.join.err.room_not_found": { en: "No room with that code.",                         pt: "Nenhuma sala com esse código." },
+  "live.join.err.room_closed": { en: "That session has ended.",                            pt: "Essa sessão já foi encerrada." },
+
+  "live.host.title":           { en: "Room",                                               pt: "Sala" },
+  "live.host.titleItalic":     { en: "open.",                                              pt: "aberta." },
+  "live.host.shareHeading":    { en: "SHARE THE CODE",                                     pt: "COMPARTILHE O CÓDIGO" },
+  "live.host.shareBlurb":      { en: "Players join at gov-game.vercel.app · Live Boardroom · Join Room.",
+                                 pt: "Jogadores entram em gov-game.vercel.app · Conselho ao Vivo · Entrar em Sala." },
+  "live.host.copyCode":        { en: "Copy code",                                          pt: "Copiar código" },
+  "live.host.codeCopied":      { en: "Copied ✓",                                           pt: "Copiado ✓" },
+  "live.host.playersHeading":  { en: "DIRECTORS · {n} SEATED",                             pt: "CONSELHEIROS · {n} SENTADO(S)" },
+  "live.host.startCta":        { en: "Begin Session →",                                    pt: "Iniciar Sessão →" },
+  "live.host.startWaiting":    { en: "Waiting for at least one other player.",             pt: "Aguardando pelo menos um outro jogador." },
+  "live.host.starting":        { en: "Opening the floor…",                                 pt: "Abrindo a sessão…" },
+  "live.host.abort":           { en: "End session",                                        pt: "Encerrar sessão" },
+
+  "live.player.lobbyTitle":    { en: "Seat taken.",                                        pt: "Assento tomado." },
+  "live.player.waiting":       { en: "Waiting for the host to begin…",                     pt: "Aguardando o anfitrião iniciar…" },
+  "live.player.youAreHost":    { en: "You are the host.",                                  pt: "Você é o anfitrião." },
+
+  "live.q.center":             { en: "LIVE · Q{n}/{total}",                                pt: "AO VIVO · Q{n}/{total}" },
+  "live.q.tagTrivia":          { en: "Trivia · {pillar}",                                  pt: "Questão · {pillar}" },
+  "live.q.tagScenario":        { en: "Crisis · {code}",                                    pt: "Crise · {code}" },
+  "live.q.time":               { en: "TIME",                                               pt: "TEMPO" },
+  "live.q.answered":           { en: "{n} / {total} answered",                             pt: "{n} / {total} responderam" },
+  "live.q.youAnswered":        { en: "Answer recorded. Holding for the table…",            pt: "Resposta registrada. Aguardando a mesa…" },
+  "live.q.timeUp":             { en: "Time's up.",                                         pt: "Tempo esgotado." },
+  "live.q.hostAdvance":        { en: "Advance →",                                          pt: "Avançar →" },
+  "live.q.endNow":             { en: "End session early",                                  pt: "Encerrar antes" },
+
+  "live.inter.title":          { en: "The table, between questions.",                      pt: "A mesa, entre as questões." },
+  "live.inter.kicker":         { en: "RANKED BY DECISIVENESS",                             pt: "RANQUEADO POR DECISIVIDADE" },
+  "live.inter.holdHost":       { en: "Host will advance shortly.",                         pt: "O anfitrião avançará em instantes." },
+
+  "live.results.center":       { en: "VII — SESSION CLOSED",                               pt: "VII — SESSÃO ENCERRADA" },
+  "live.results.title":        { en: "Your reading",                                       pt: "Sua leitura" },
+  "live.results.titleItalic":  { en: "of the table.",                                      pt: "da mesa." },
+  "live.results.youAre":       { en: "YOU ARE",                                            pt: "VOCÊ É" },
+  "live.results.roomMix":      { en: "ROOM ARCHETYPE MIX",                                 pt: "DISTRIBUIÇÃO DE PERFIS DA SALA" },
+  "live.results.finalRanking": { en: "FINAL RANKING",                                      pt: "RANKING FINAL" },
+  "live.results.adjourn":      { en: "Adjourn → Lobby",                                    pt: "Encerrar → Lobby" },
+  "live.results.you":          { en: "you",                                                pt: "você" },
+
+  "live.aborted.title":        { en: "The session was closed.",                            pt: "A sessão foi encerrada." },
+  "live.aborted.blurb":        { en: "The host ended the room before the final question.", pt: "O anfitrião encerrou a sala antes da última questão." },
+  "live.aborted.back":         { en: "Back to Lobby →",                                    pt: "Voltar ao Lobby →" },
+
+  "live.error.config_missing": { en: "Backend not configured. Check config.js.",           pt: "Backend não configurado. Verifique config.js." },
+  "live.error.warming":        { en: "Server warming up. Try again in a moment.",          pt: "Servidor aquecendo. Tente novamente em instantes." },
+  "live.error.network":        { en: "Network error.",                                     pt: "Erro de rede." },
+  "live.error.not_host":       { en: "Only the host can do that.",                         pt: "Só o anfitrião pode fazer isso." },
+  "live.error.already_started":{ en: "The session has already started.",                   pt: "A sessão já começou." },
+  "live.error.time_up":        { en: "Time's up for this question.",                       pt: "Tempo esgotado para esta questão." },
+  "live.error.wrong_question": { en: "The room moved on. Catching up…",                    pt: "A sala avançou. Sincronizando…" },
 };
 
 const t = (key, lang, vars) => {
@@ -1218,6 +1289,104 @@ const Auth = {
 };
 
 // ============================================================
+// LIVE MODE — multiplayer RPCs + Realtime broadcast helpers
+// ============================================================
+// Kahoot-style: one host creates a room (6-char code), players join by
+// code, host advances questions on a server-authoritative timer, every
+// pick is silently weighed into the shared room state. Broadcast events
+// flow over a per-room Supabase Realtime channel.
+
+const LiveErr = (e) => {
+  const msg = String(e && e.message || "").toLowerCase();
+  if (!e) return "network";
+  if (msg.includes("failed to fetch") || msg.includes("networkerror") ||
+      msg.includes("503") || msg.includes("coming up")) return "warming";
+  return "network";
+};
+
+const Live = {
+  async createRoom(token, lang, questionSet) {
+    if (!SB) return { error: "config_missing" };
+    try {
+      const { data, error } = await SB.rpc("create_room", {
+        p_token: token, p_lang: lang, p_question_set: questionSet,
+      });
+      if (error) return { error: LiveErr(error), details: error.message };
+      if (data && data.error) return { error: data.error };
+      return { ok: true, room: data };
+    } catch (e) { return { error: "warming", details: String(e && e.message || e) }; }
+  },
+
+  async joinRoom(token, code) {
+    if (!SB) return { error: "config_missing" };
+    try {
+      const { data, error } = await SB.rpc("join_room", { p_token: token, p_code: code });
+      if (error) return { error: LiveErr(error), details: error.message };
+      if (data && data.error) return { error: data.error };
+      return { ok: true, room: data };
+    } catch (e) { return { error: "warming", details: String(e && e.message || e) }; }
+  },
+
+  async startRoom(token, roomId) {
+    if (!SB) return { error: "config_missing" };
+    try {
+      const { data, error } = await SB.rpc("start_room", { p_token: token, p_room_id: roomId });
+      if (error) return { error: LiveErr(error), details: error.message };
+      if (data && data.error) return { error: data.error };
+      return { ok: true, state: data };
+    } catch (e) { return { error: "warming", details: String(e && e.message || e) }; }
+  },
+
+  async submitAnswer(token, roomId, questionIdx, optionK, weights) {
+    if (!SB) return { error: "config_missing" };
+    try {
+      const { data, error } = await SB.rpc("submit_answer", {
+        p_token: token, p_room_id: roomId,
+        p_question_idx: questionIdx, p_option_k: optionK,
+        p_weights: weights || EMPTY_PROFILE(),
+      });
+      if (error) return { error: LiveErr(error), details: error.message };
+      if (data && data.error) return { error: data.error };
+      return { ok: true, state: data };
+    } catch (e) { return { error: "warming", details: String(e && e.message || e) }; }
+  },
+
+  async advanceQuestion(token, roomId) {
+    if (!SB) return { error: "config_missing" };
+    try {
+      const { data, error } = await SB.rpc("advance_question", { p_token: token, p_room_id: roomId });
+      if (error) return { error: LiveErr(error), details: error.message };
+      if (data && data.error) return { error: data.error };
+      return { ok: true, state: data };
+    } catch (e) { return { error: "warming", details: String(e && e.message || e) }; }
+  },
+
+  async getRoomState(token, code) {
+    if (!SB) return { error: "config_missing" };
+    try {
+      const { data, error } = await SB.rpc("get_room_state", { p_token: token, p_code: code });
+      if (error) return { error: LiveErr(error), details: error.message };
+      if (data && data.error) return { error: data.error };
+      return { ok: true, room: data };
+    } catch (e) { return { error: "warming", details: String(e && e.message || e) }; }
+  },
+
+  async endRoom(token, roomId) {
+    if (!SB) return { error: "config_missing" };
+    try {
+      await SB.rpc("end_room", { p_token: token, p_room_id: roomId });
+    } catch (e) {}
+    return { ok: true };
+  },
+
+  // Broadcast helper: hosts emit lifecycle events, players emit acknowledgements.
+  channel(roomId) {
+    if (!SB || !roomId) return null;
+    return SB.channel(`room:${roomId}`, { config: { broadcast: { self: false } } });
+  },
+};
+
+// ============================================================
 // SAVE QUEUE — offline / cold-start resilience
 // ============================================================
 // Runs that fail to save (because Supabase is warming up or the device
@@ -1829,7 +1998,7 @@ function Menu({ go, identity, scores, isMobile, isTablet, onTakeover, lang, setL
               { id: "leader",  no: "V"   },
               { id: "profile", no: "VI"  },
             ].map((m, i) => {
-              const targets = { solo: "game", crisis: "scenario", esg: "game", multi: "game", leader: "leader", profile: "results" };
+              const targets = { solo: "game", crisis: "scenario", esg: "game", multi: "live-entry", leader: "leader", profile: "results" };
               const target = targets[m.id];
               const dark = i === 0 || i === 4;
               return (
@@ -3693,8 +3862,916 @@ function TourOverlay({ steps, onClose, lang, isMobile }) {
 }
 
 // ============================================================
-// PROTO NAV / APP
+// LIVE MODE — hooks, screens
 // ============================================================
+
+// Authoritative countdown based on a server-set ISO timestamp.
+// Returns remaining whole seconds (clamped at 0).
+function useCountdown(endsAtIso) {
+  const [seconds, setSeconds] = useState(() => {
+    if (!endsAtIso) return 0;
+    const ms = Date.parse(endsAtIso) - Date.now();
+    return Math.max(0, Math.ceil(ms / 1000));
+  });
+  useEffect(() => {
+    if (!endsAtIso) { setSeconds(0); return; }
+    let raf = 0;
+    const tick = () => {
+      const ms = Date.parse(endsAtIso) - Date.now();
+      const s = Math.max(0, Math.ceil(ms / 1000));
+      setSeconds(s);
+      if (ms > 0) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [endsAtIso]);
+  return seconds;
+}
+
+// Subscribes to the room's broadcast channel. Returns { room, setRoom, broadcast, refresh }.
+function useLiveRoom(initialRoom, sessionToken) {
+  const [room, setRoom] = useState(initialRoom);
+  const channelRef = useRef(null);
+
+  // Keep state in sync if parent passes a fresh initialRoom (after refresh)
+  useEffect(() => {
+    if (initialRoom && initialRoom.room_id && (!room || room.room_id !== initialRoom.room_id)) {
+      setRoom(initialRoom);
+    }
+  }, [initialRoom && initialRoom.room_id]);
+
+  useEffect(() => {
+    if (!SB || !room || !room.room_id) return;
+    const channel = SB.channel(`room:${room.room_id}`, { config: { broadcast: { self: false } } });
+    channel.on("broadcast", { event: "message" }, ({ payload }) => {
+      if (!payload || !payload.type) return;
+      setRoom(prev => {
+        if (!prev) return prev;
+        switch (payload.type) {
+          case "PLAYER_JOINED": {
+            const exists = (prev.players || []).some(p => p.user_id === payload.player.user_id);
+            return exists ? prev : { ...prev, players: [...(prev.players || []), payload.player] };
+          }
+          case "PLAYER_LEFT":
+            return { ...prev, players: (prev.players || []).filter(p => p.user_id !== payload.user_id) };
+          case "QUESTION_STARTED":
+            return { ...prev, status: "playing", current_q: payload.question_idx, question_ends_at: payload.ends_at_iso, _ack: null };
+          case "PLAYER_ANSWERED":
+            return { ...prev, _ack: { question_idx: payload.question_idx, answered_count: payload.answered_count, total_players: payload.total_players } };
+          case "QUESTION_ENDED":
+            return { ...prev, _scoreboard: payload.scoreboard, status: "intermission" };
+          case "GAME_ENDED":
+            return { ...prev, status: "ended", final_ranking: payload.final_ranking };
+          case "ROOM_ABORTED":
+            return { ...prev, status: "aborted" };
+          default:
+            return prev;
+        }
+      });
+    });
+    channel.subscribe();
+    channelRef.current = channel;
+    return () => {
+      if (channelRef.current) {
+        try { SB.removeChannel(channelRef.current); } catch (e) {}
+        channelRef.current = null;
+      }
+    };
+  }, [room && room.room_id]);
+
+  const broadcast = useCallback((payload) => {
+    if (!channelRef.current) return;
+    try { channelRef.current.send({ type: "broadcast", event: "message", payload }); } catch (e) {}
+  }, []);
+
+  const refresh = useCallback(async () => {
+    if (!room || !room.code || !sessionToken) return;
+    const res = await Live.getRoomState(sessionToken, room.code);
+    if (res.ok) setRoom(res.room);
+  }, [room && room.code, sessionToken]);
+
+  return { room, setRoom, broadcast, refresh };
+}
+
+// Build the question_set for a new room — mixes trivia (25s) with short scenarios (60s),
+// interleaved for rhythm. Default: all 8 trivia + 4 scenarios.
+function buildLiveQuestionSet() {
+  const trivia    = QUESTIONS.map(q => ({ kind: "trivia",   id: q.id, duration_s: 25 }));
+  const scenarios = SCENARIOS.slice(0, 4).map(s => ({ kind: "scenario", id: s.id, duration_s: 60 }));
+  // interleave: t, s, t, t, s, t, t, s, t, t, s, t
+  const out = [];
+  let ti = 0, si = 0;
+  for (let i = 0; i < trivia.length + scenarios.length; i++) {
+    if (si < scenarios.length && (i + 1) % 3 === 0) out.push(scenarios[si++]);
+    else if (ti < trivia.length) out.push(trivia[ti++]);
+    else if (si < scenarios.length) out.push(scenarios[si++]);
+  }
+  return out;
+}
+
+// ───────── LiveEntry: choose Create or Join ─────────
+
+function LiveEntry({ go, isMobile, lang, setLang, session, onLogin, onLogout, onCreate, onJoin, creating }) {
+  return (
+    <div style={{ background: "var(--paper)", minHeight: "100%", display: "flex", flexDirection: "column" }}>
+      <TopFrame
+        isMobile={isMobile} lang={lang} setLang={setLang}
+        session={session} onLogin={onLogin} onLogout={onLogout}
+        left={
+          <>
+            <button onClick={() => go("menu")} style={{ fontFamily: "var(--sans)", fontSize: 11, letterSpacing: 2, textTransform: "uppercase" }}>{t("live.entry.back", lang)}</button>
+            <Rule vertical style={{ height: 18 }} />
+            <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)" }}>{t("live.entry.section", lang)}</span>
+          </>
+        }
+        center={t("live.entry.section", lang)}
+        right={null}
+      />
+      <main style={{ flex: 1, padding: isMobile ? "26px 22px" : "60px 56px", display: "flex", flexDirection: "column", overflow: "auto" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 18, marginBottom: 22, color: "var(--silver-2)" }}>
+          <Rule style={{ width: isMobile ? 36 : 56 }} />
+          <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 3, textTransform: "uppercase" }}>
+            {t("live.entry.section", lang)}
+          </span>
+        </div>
+        <h1 style={{
+          margin: 0, fontFamily: "var(--serif)", fontWeight: 500,
+          fontSize: isMobile ? "clamp(48px, 14vw, 88px)" : "clamp(80px, 9vw, 130px)",
+          letterSpacing: isMobile ? -2 : -3,
+          lineHeight: 0.92,
+        }}>
+          {t("live.entry.titleA", lang)}<br /><em style={{ fontWeight: 400 }}>{t("live.entry.titleB", lang)}</em>
+        </h1>
+        <p style={{
+          marginTop: isMobile ? 22 : 32,
+          fontFamily: "var(--serif)", fontStyle: "italic",
+          fontSize: isMobile ? 17 : 22, lineHeight: 1.35,
+          color: "var(--ink-2)", maxWidth: 640,
+        }}>
+          {t("live.entry.blurb", lang)}
+        </p>
+
+        <div style={{
+          marginTop: isMobile ? 32 : 56,
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+          gap: 1, background: "var(--rule)", border: "1px solid var(--rule)", maxWidth: 760,
+        }}>
+          <button
+            onClick={onCreate}
+            disabled={creating}
+            style={{
+              background: "var(--ink)", color: "var(--paper)",
+              padding: isMobile ? "30px 24px" : "44px 36px",
+              textAlign: "left", display: "flex", flexDirection: "column",
+              minHeight: isMobile ? 160 : 220,
+              cursor: creating ? "wait" : "pointer",
+              opacity: creating ? 0.7 : 1,
+              transition: "opacity 200ms ease",
+            }}
+          >
+            <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 3, color: "var(--silver)" }}>I</span>
+            <span style={{ flex: 1 }} />
+            <span style={{ fontFamily: "var(--serif)", fontSize: isMobile ? 30 : 38, fontWeight: 500, letterSpacing: -0.5, lineHeight: 1, marginTop: 28 }}>
+              {creating ? t("live.host.starting", lang) : t("live.entry.create", lang)}
+            </span>
+          </button>
+          <button
+            onClick={onJoin}
+            style={{
+              background: "var(--paper)", color: "var(--ink)",
+              padding: isMobile ? "30px 24px" : "44px 36px",
+              textAlign: "left", display: "flex", flexDirection: "column",
+              minHeight: isMobile ? 160 : 220,
+              cursor: "pointer",
+              transition: "background 250ms ease, color 250ms ease",
+            }}
+            onMouseOver={e => { e.currentTarget.style.background = "var(--ink)"; e.currentTarget.style.color = "var(--paper)"; }}
+            onMouseOut={e =>  { e.currentTarget.style.background = "var(--paper)"; e.currentTarget.style.color = "var(--ink)"; }}
+          >
+            <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 3 }}>II</span>
+            <span style={{ flex: 1 }} />
+            <span style={{ fontFamily: "var(--serif)", fontSize: isMobile ? 30 : 38, fontWeight: 500, letterSpacing: -0.5, lineHeight: 1, marginTop: 28 }}>
+              {t("live.entry.join", lang)}
+            </span>
+          </button>
+        </div>
+      </main>
+    </div>
+  );
+}
+
+// ───────── LiveJoin: enter code ─────────
+
+function LiveJoin({ go, isMobile, lang, setLang, session, onLogin, onLogout, onSubmit, busy, errKey }) {
+  const [code, setCode] = useState("");
+  const submit = (e) => {
+    e && e.preventDefault();
+    const c = code.trim().toUpperCase();
+    if (c.length === 6) onSubmit(c);
+  };
+  const errText = errKey ? (t(`live.join.err.${errKey}`, lang) === `live.join.err.${errKey}` ? t(`live.error.${errKey}`, lang) : t(`live.join.err.${errKey}`, lang)) : null;
+
+  return (
+    <div style={{ background: "var(--paper)", minHeight: "100%", display: "flex", flexDirection: "column" }}>
+      <TopFrame
+        isMobile={isMobile} lang={lang} setLang={setLang}
+        session={session} onLogin={onLogin} onLogout={onLogout}
+        left={
+          <>
+            <button onClick={() => go("live-entry")} style={{ fontFamily: "var(--sans)", fontSize: 11, letterSpacing: 2, textTransform: "uppercase" }}>{t("live.entry.back", lang)}</button>
+            <Rule vertical style={{ height: 18 }} />
+            <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)" }}>{t("live.entry.join", lang)}</span>
+          </>
+        }
+        center={t("live.entry.join", lang)}
+        right={null}
+      />
+      <main style={{ flex: 1, padding: isMobile ? "26px 22px" : "60px 56px", display: "flex", flexDirection: "column", justifyContent: "center", maxWidth: 720, margin: "0 auto", width: "100%" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 18, marginBottom: 22, color: "var(--silver-2)" }}>
+          <Rule style={{ width: isMobile ? 36 : 56 }} />
+          <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 3, textTransform: "uppercase" }}>
+            {t("live.entry.join", lang)}
+          </span>
+        </div>
+        <h1 style={{
+          margin: 0, fontFamily: "var(--serif)", fontWeight: 500,
+          fontSize: isMobile ? "clamp(40px, 11vw, 64px)" : 78,
+          letterSpacing: isMobile ? -1 : -2,
+          lineHeight: 0.95,
+        }}>
+          {t("live.join.title", lang)}
+        </h1>
+        <p style={{
+          marginTop: isMobile ? 14 : 22,
+          fontFamily: "var(--sans)", fontSize: 13, lineHeight: 1.55,
+          color: "var(--ink-2)", maxWidth: 540,
+        }}>
+          {t("live.join.blurb", lang)}
+        </p>
+
+        <form onSubmit={submit} style={{ marginTop: isMobile ? 24 : 36 }}>
+          <input
+            type="text"
+            value={code}
+            onChange={e => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 6))}
+            placeholder={t("live.join.placeholder", lang)}
+            autoFocus
+            autoComplete="off"
+            spellCheck={false}
+            style={{
+              width: "100%", maxWidth: 480,
+              padding: isMobile ? "18px 22px" : "26px 30px",
+              border: "1px solid var(--ink)", borderRadius: 0,
+              background: "var(--paper)",
+              fontFamily: "var(--mono)",
+              fontSize: isMobile ? 34 : 48,
+              letterSpacing: "0.3em",
+              textAlign: "center",
+              color: "var(--ink)", outline: "none",
+            }}
+          />
+          {errText && (
+            <div style={{
+              marginTop: 14, padding: "10px 14px",
+              background: "#f6e9e6", border: "1px solid var(--warning)",
+              color: "var(--warning)", fontFamily: "var(--sans)", fontSize: 12,
+              maxWidth: 480,
+            }}>
+              {errText}
+            </div>
+          )}
+          <div style={{ marginTop: 22 }}>
+            <PillButton onClick={submit} disabled={busy || code.length !== 6}>
+              {busy ? t("live.join.connecting", lang) : t("live.join.cta", lang)}
+            </PillButton>
+          </div>
+        </form>
+      </main>
+    </div>
+  );
+}
+
+
+
+// ───────── LiveSession — the active room (lobby → playing → ended) ─────────
+
+function LiveSession({ go, isMobile, isTablet, lang, setLang, session, onLogin, onLogout, initialRoom, onExit }) {
+  const { room, broadcast, refresh } = useLiveRoom(initialRoom, session && session.token);
+
+  // Personal profile accumulated locally as the user picks
+  const [myProfile, setMyProfile] = useState(EMPTY_PROFILE());
+  const [myAnswers, setMyAnswers] = useState({});  // { questionIdx: optionK }
+  const [busy, setBusy] = useState(false);
+  const [errKey, setErrKey] = useState(null);
+
+  // Host-only abort on tab close
+  useEffect(() => {
+    if (!room || !room.is_host || !session) return;
+    const onUnload = () => {
+      try {
+        const blob = new Blob([JSON.stringify({})], { type: "application/json" });
+        // best-effort: also fire-and-forget end_room and the broadcast
+        Live.endRoom(session.token, room.room_id);
+        broadcast({ type: "ROOM_ABORTED" });
+      } catch (e) {}
+    };
+    window.addEventListener("beforeunload", onUnload);
+    return () => window.removeEventListener("beforeunload", onUnload);
+  }, [room && room.room_id, room && room.is_host, session && session.token]);
+
+  // Player late-join refresh on remount (e.g., F5 mid-game)
+  useEffect(() => {
+    if (room && room.code && session && session.token) {
+      // one quick refresh to make sure we have the latest state
+      refresh();
+    }
+    // eslint-disable-next-line
+  }, []);
+
+  if (!room) {
+    return (
+      <div style={{ background: "var(--paper)", minHeight: "100%", display: "grid", placeItems: "center", padding: 24 }}>
+        <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--silver-2)", letterSpacing: 2 }}>
+          {t("live.join.connecting", lang)}
+        </span>
+      </div>
+    );
+  }
+
+  // ── Host actions ──
+  async function startSession() {
+    if (busy) return;
+    setBusy(true); setErrKey(null);
+    const res = await Live.startRoom(session.token, room.room_id);
+    setBusy(false);
+    if (res.error) { setErrKey(res.error); return; }
+    // Broadcast to all players + update local
+    broadcast({ type: "QUESTION_STARTED", question_idx: 0, ends_at_iso: res.state.question_ends_at });
+    // Local state already reflects via the channel.send( {self:false} ) — apply locally too
+    refresh();
+  }
+  async function advance() {
+    if (busy) return;
+    setBusy(true); setErrKey(null);
+    const res = await Live.advanceQuestion(session.token, room.room_id);
+    setBusy(false);
+    if (res.error) { setErrKey(res.error); return; }
+    if (res.state.status === "ended") {
+      broadcast({ type: "GAME_ENDED", final_ranking: res.state.final_ranking });
+      // Local
+      refresh();
+    } else {
+      broadcast({ type: "QUESTION_STARTED", question_idx: res.state.current_q, ends_at_iso: res.state.question_ends_at });
+      refresh();
+    }
+  }
+  async function endNow() {
+    if (busy) return;
+    if (!window.confirm(lang === "pt" ? "Encerrar a sessão agora?" : "End the session now?")) return;
+    setBusy(true);
+    await Live.endRoom(session.token, room.room_id);
+    broadcast({ type: "ROOM_ABORTED" });
+    setBusy(false);
+  }
+
+  // ── Player action ──
+  async function pickOption(optK, weights) {
+    if (busy) return;
+    if (myAnswers[room.current_q]) return;
+    setBusy(true); setErrKey(null);
+    // Optimistic local update
+    setMyAnswers(a => ({ ...a, [room.current_q]: optK }));
+    setMyProfile(p => addWeights(p, weights));
+    const res = await Live.submitAnswer(session.token, room.room_id, room.current_q, optK, weights);
+    setBusy(false);
+    if (res.error) {
+      setErrKey(res.error);
+      // Roll back optimistic update on hard errors
+      if (res.error === "wrong_question" || res.error === "time_up") {
+        setMyAnswers(a => { const n = { ...a }; delete n[room.current_q]; return n; });
+      }
+      return;
+    }
+    // Broadcast the ack so host's "X / N" updates
+    broadcast({ type: "PLAYER_ANSWERED",
+      user_id: session.user.id, question_idx: room.current_q,
+      answered_count: res.state.answered_count, total_players: res.state.total_players });
+  }
+
+  // ── Current event lookup (question or scenario) ──
+  const currentEvent = room.current_q >= 0 && room.question_set ? room.question_set[room.current_q] : null;
+  const currentQ  = currentEvent && currentEvent.kind === "trivia"   ? QUESTIONS.find(x => x.id === currentEvent.id) : null;
+  const currentSc = currentEvent && currentEvent.kind === "scenario" ? SCENARIOS.find(x => x.id === currentEvent.id) : null;
+  const totalQs   = room.question_set ? room.question_set.length : 0;
+
+  const myPicked = myAnswers[room.current_q] || null;
+  const seconds = useCountdown(room.question_ends_at);
+
+  // ── ABORTED ──
+  if (room.status === "aborted") {
+    return (
+      <div style={{ background: "var(--paper)", minHeight: "100%", display: "flex", flexDirection: "column" }}>
+        <TopFrame
+          isMobile={isMobile} lang={lang} setLang={setLang}
+          session={session} onLogin={onLogin} onLogout={onLogout}
+          left={
+            <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--warning)" }}>● {t("live.aborted.title", lang)}</span>
+          }
+          center={t("live.entry.section", lang)}
+          right={null}
+        />
+        <main style={{ flex: 1, padding: isMobile ? "26px 22px" : "60px 56px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <h1 style={{
+            margin: 0, fontFamily: "var(--serif)", fontWeight: 500,
+            fontSize: isMobile ? "clamp(40px, 11vw, 64px)" : 64,
+            letterSpacing: -1.5, lineHeight: 1,
+          }}>
+            {t("live.aborted.title", lang)}
+          </h1>
+          <p style={{ marginTop: 18, fontFamily: "var(--serif)", fontStyle: "italic", fontSize: 18, color: "var(--ink-2)", maxWidth: 540 }}>
+            {t("live.aborted.blurb", lang)}
+          </p>
+          <div style={{ marginTop: 28 }}>
+            <PillButton onClick={onExit}>{t("live.aborted.back", lang)}</PillButton>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  // ── ENDED (results) ──
+  if (room.status === "ended") {
+    const ranking = room.final_ranking || [];
+    const me = ranking.find(r => r.user_id === (session && session.user && session.user.id));
+    const myFinalProfile = (me && me.profile) || myProfile;
+    const entries = ARCHETYPES.map(a => [a, (myFinalProfile && myFinalProfile[a]) || 0]).sort((x, y) => y[1] - x[1]);
+    const winner = entries[0];
+    const runnerUp = entries[1] || [null, 0];
+    const winnerKey = (winner[1] <= 0 || winner[1] - runnerUp[1] < 2) ? "balanced" : winner[0];
+
+    return (
+      <div style={{ background: "var(--paper)", minHeight: "100%", display: "flex", flexDirection: "column" }}>
+        <TopFrame
+          isMobile={isMobile} lang={lang} setLang={setLang}
+          session={session} onLogin={onLogin} onLogout={onLogout}
+          left={<span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)" }}>{t("live.results.center", lang)}</span>}
+          center={t("live.results.center", lang)}
+          right={<button onClick={onExit} style={{ fontFamily: "var(--sans)", fontSize: 11, letterSpacing: 2, textTransform: "uppercase" }}>{t("live.results.adjourn", lang)}</button>}
+        />
+        <main style={{
+          flex: 1,
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "1.1fr 1fr",
+          overflow: isMobile ? "visible" : "hidden",
+        }}>
+          <section style={{ padding: isMobile ? "26px 22px" : "44px 56px", overflow: isMobile ? "visible" : "auto" }}>
+            <div style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 3, color: "var(--silver-2)", marginBottom: 8 }}>{t("live.results.youAre", lang)}</div>
+            <h1 style={{
+              margin: 0, fontFamily: "var(--serif)", fontWeight: 500,
+              fontSize: isMobile ? "clamp(40px, 12vw, 72px)" : 84,
+              letterSpacing: -2, lineHeight: 1,
+            }}>
+              {t(`arch.${winnerKey}`, lang)}
+            </h1>
+            <div style={{ marginTop: 14, fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)", textTransform: "uppercase" }}>
+              {t(`arch.${winnerKey}.theory`, lang)}
+            </div>
+            <p style={{ marginTop: 10, fontFamily: "var(--sans)", fontSize: 13, lineHeight: 1.55, color: "var(--ink-2)", maxWidth: 540 }}>
+              {t(`arch.${winnerKey}.desc`, lang)}
+            </p>
+
+            {/* Profile distribution */}
+            <div style={{ marginTop: 28 }}>
+              <div style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)", marginBottom: 12 }}>
+                {t("res.profileBreakdown", lang)}
+              </div>
+              <div style={{ display: "grid", gap: 10 }}>
+                {entries.map(([a, v]) => {
+                  const maxAbs = Math.max(1, ...entries.map(([_, x]) => Math.abs(x)));
+                  const pct = (Math.abs(v) / maxAbs) * 50;
+                  const isWin = a === winnerKey;
+                  return (
+                    <div key={a} style={{ display: "grid", gridTemplateColumns: isMobile ? "100px 1fr 36px" : "130px 1fr 40px", gap: 10, alignItems: "center" }}>
+                      <span style={{ fontFamily: "var(--sans)", fontSize: 11, fontWeight: isWin ? 700 : 400, color: isWin ? "var(--ink)" : "var(--ink-2)" }}>
+                        {t(`arch.${a}`, lang)}
+                      </span>
+                      <div style={{ position: "relative", height: 4, background: "var(--rule)" }}>
+                        <div style={{ position: "absolute", left: "50%", top: -3, bottom: -3, width: 1, background: "var(--silver-2)" }} />
+                        <div style={{
+                          position: "absolute",
+                          left: v >= 0 ? "50%" : `${50 - pct}%`,
+                          width: `${pct}%`, height: "100%",
+                          background: isWin ? "var(--ink)" : v < 0 ? "var(--warning)" : "var(--silver-2)",
+                          transition: "all 600ms cubic-bezier(.2,.7,.2,1)",
+                        }} />
+                      </div>
+                      <span style={{
+                        fontFamily: "var(--mono)", fontSize: 11,
+                        textAlign: "right",
+                        color: v < 0 ? "var(--warning)" : isWin ? "var(--ink)" : "var(--silver-2)",
+                        fontWeight: isWin ? 600 : 400,
+                      }}>
+                        {v > 0 ? "+" : ""}{v}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+
+          <section style={{
+            background: "var(--paper-2)",
+            borderLeft: isMobile ? "none" : "1px solid var(--rule)",
+            borderTop: isMobile ? "1px solid var(--rule)" : "none",
+            padding: isMobile ? "26px 22px" : "44px 48px",
+            overflow: isMobile ? "visible" : "auto",
+          }}>
+            <div style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)", marginBottom: 12 }}>
+              {t("live.results.finalRanking", lang)}
+            </div>
+            <div style={{ display: "grid", gap: 1, background: "var(--rule)", border: "1px solid var(--rule)" }}>
+              {ranking.map((r, i) => {
+                const isMe = session && r.user_id === session.user.id;
+                return (
+                  <div key={r.user_id} style={{
+                    background: isMe ? "var(--ink)" : "var(--paper)",
+                    color: isMe ? "var(--paper)" : "var(--ink)",
+                    padding: isMobile ? "12px 14px" : "16px 18px",
+                    display: "grid",
+                    gridTemplateColumns: "44px 1fr 60px",
+                    gap: 12, alignItems: "center",
+                  }}>
+                    <span style={{ fontFamily: "var(--serif)", fontStyle: "italic", fontSize: 22, fontWeight: 500, letterSpacing: -0.5 }}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div style={{ minWidth: 0 }}>
+                      <div style={{ fontFamily: "var(--serif)", fontSize: 17, fontWeight: 500, letterSpacing: -0.3, lineHeight: 1.1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                        {r.display_name}{isMe ? ` · ${t("live.results.you", lang)}` : ""}
+                      </div>
+                      {r.course && <div style={{ fontFamily: "var(--mono)", fontSize: 10, color: isMe ? "var(--silver)" : "var(--silver-2)", marginTop: 2 }}>{r.course}</div>}
+                    </div>
+                    <span style={{ fontFamily: "var(--mono)", fontSize: 13, fontWeight: 500, textAlign: "right" }}>
+                      {r.magnitude || 0}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        </main>
+      </div>
+    );
+  }
+
+  // ── INTERMISSION (transient scoreboard between questions) ──
+  if (room.status === "intermission") {
+    const sb = room._scoreboard || [];
+    return (
+      <div style={{ background: "var(--ink)", minHeight: "100%", color: "var(--paper)", padding: isMobile ? "30px 22px" : "60px 56px" }}>
+        <div style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 3, color: "var(--silver)", marginBottom: 14 }}>
+          {t("live.inter.kicker", lang)}
+        </div>
+        <h2 style={{
+          margin: 0, fontFamily: "var(--serif)", fontWeight: 500,
+          fontSize: isMobile ? "clamp(32px, 9vw, 56px)" : 60,
+          letterSpacing: -1.5, lineHeight: 1, marginBottom: 28,
+        }}>
+          {t("live.inter.title", lang)}
+        </h2>
+        <div style={{ display: "grid", gap: 1, background: "var(--ink-3)", border: "1px solid var(--ink-3)", maxWidth: 640 }}>
+          {sb.map((r, i) => (
+            <div key={r.user_id} style={{
+              background: "var(--ink-2)", color: "var(--paper)",
+              padding: "14px 18px",
+              display: "grid", gridTemplateColumns: "44px 1fr 60px", gap: 12, alignItems: "center",
+            }}>
+              <span style={{ fontFamily: "var(--serif)", fontStyle: "italic", fontSize: 22, fontWeight: 500, color: "var(--silver)" }}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span style={{ fontFamily: "var(--serif)", fontSize: 17 }}>{r.display_name}</span>
+              <span style={{ fontFamily: "var(--mono)", fontSize: 13, textAlign: "right" }}>{r.magnitude}</span>
+            </div>
+          ))}
+        </div>
+        {room.is_host && (
+          <div style={{ marginTop: 24 }}>
+            <PillButton onClick={advance} disabled={busy} style={{ background: "var(--paper)", color: "var(--ink)" }}>
+              {t("live.q.hostAdvance", lang)}
+            </PillButton>
+          </div>
+        )}
+        {!room.is_host && (
+          <div style={{ marginTop: 18, fontFamily: "var(--mono)", fontSize: 11, letterSpacing: 2, color: "var(--silver)" }}>
+            {t("live.inter.holdHost", lang)}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // ── PLAYING ──
+  if (room.status === "playing" && currentEvent) {
+    const players = room.players || [];
+    const totalPlayers = players.length;
+    const answeredCount = (room._ack && room._ack.question_idx === room.current_q) ? room._ack.answered_count : (myPicked ? 1 : 0);
+    return (
+      <div style={{ background: "var(--paper)", minHeight: "100%", display: "flex", flexDirection: "column" }}>
+        <TopFrame
+          isMobile={isMobile} lang={lang} setLang={setLang}
+          session={session} onLogin={onLogin} onLogout={onLogout}
+          left={<span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--warning)" }}>● {t("live.q.center", lang, { n: room.current_q + 1, total: totalQs })}</span>}
+          center={t("live.q.center", lang, { n: room.current_q + 1, total: totalQs })}
+          right={
+            room.is_host ? (
+              <button onClick={endNow} style={{ fontFamily: "var(--sans)", fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: "var(--silver-2)" }}>{t("live.q.endNow", lang)}</button>
+            ) : null
+          }
+        />
+        <main style={{ flex: 1, padding: isMobile ? "22px 22px" : "36px 56px", overflow: "auto", display: "flex", flexDirection: "column" }}>
+          {/* Header: tag + timer */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 16, gap: 12, flexWrap: "wrap" }}>
+            <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 3, padding: "5px 10px", border: "1px solid var(--ink)" }}>
+              {currentEvent.kind === "trivia"
+                ? t("live.q.tagTrivia", lang, { pillar: t(`pillar.${currentQ.pillarKey}`, lang).toUpperCase() })
+                : t("live.q.tagScenario", lang, { code: currentSc.code })}
+            </span>
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)" }}>{t("live.q.time", lang)}</span>
+              <span style={{ fontFamily: "var(--serif)", fontSize: 32, fontWeight: 500, letterSpacing: -0.5, color: seconds <= 5 ? "var(--warning)" : "var(--ink)" }}>
+                0:{String(seconds).padStart(2, "0")}
+              </span>
+            </div>
+          </div>
+          {/* Timer progress bar */}
+          <div style={{ height: 1, background: "var(--rule)", position: "relative", marginBottom: isMobile ? 22 : 32 }}>
+            <div style={{
+              position: "absolute", left: 0, top: 0, height: 2, marginTop: -0.5,
+              width: `${Math.max(0, (seconds / Math.max(1, currentEvent.duration_s)) * 100)}%`,
+              background: seconds <= 5 ? "var(--warning)" : "var(--ink)",
+              transition: "width 1s linear",
+            }} />
+          </div>
+
+          {/* Question content */}
+          {currentEvent.kind === "trivia" && currentQ && (
+            <>
+              <h1 style={{
+                margin: 0, fontFamily: "var(--serif)",
+                fontSize: isMobile ? "clamp(20px, 5.5vw, 28px)" : 34,
+                fontWeight: 500, lineHeight: 1.25, letterSpacing: -0.5,
+                marginBottom: isMobile ? 18 : 28, color: "var(--ink)", maxWidth: 800,
+              }}>
+                {pick(currentQ.prompt, lang)}
+              </h1>
+              <div style={{ display: "grid", gap: 1, background: "var(--rule)", border: "1px solid var(--rule)", maxWidth: 800 }}>
+                {currentQ.options.map(o => {
+                  const isPicked = myPicked === o.k;
+                  const dim = myPicked && !isPicked;
+                  return (
+                    <button
+                      key={o.k}
+                      onClick={() => pickOption(o.k, o.weights)}
+                      disabled={!!myPicked || seconds === 0 || busy}
+                      style={{
+                        background: isPicked ? "var(--ink)" : "var(--paper)",
+                        color: isPicked ? "var(--paper)" : "var(--ink)",
+                        opacity: dim ? 0.45 : 1,
+                        padding: isMobile ? "16px 18px" : "20px 24px",
+                        textAlign: "left",
+                        display: "grid", gridTemplateColumns: isMobile ? "32px 1fr" : "44px 1fr auto",
+                        gap: isMobile ? 14 : 18, alignItems: "center",
+                        cursor: myPicked || seconds === 0 ? "default" : "pointer",
+                        transition: "all 220ms ease",
+                      }}
+                      onMouseOver={e => { if (!myPicked && seconds > 0) { e.currentTarget.style.background = "var(--ink)"; e.currentTarget.style.color = "var(--paper)"; } }}
+                      onMouseOut={e =>  { if (!myPicked && seconds > 0) { e.currentTarget.style.background = "var(--paper)"; e.currentTarget.style.color = "var(--ink)"; } }}
+                    >
+                      <span style={{ fontFamily: "var(--serif)", fontSize: isMobile ? 22 : 26, fontWeight: 500, fontStyle: "italic", letterSpacing: -0.5 }}>{o.k}</span>
+                      <span style={{ fontFamily: "var(--sans)", fontSize: isMobile ? 14 : 15, lineHeight: 1.45 }}>{pick(o.text, lang)}</span>
+                      {!isMobile && (
+                        <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, opacity: 0.55 }}>
+                          {isPicked ? t("opt.recorded", lang) : t("opt.select", lang)}
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </>
+          )}
+
+          {currentEvent.kind === "scenario" && currentSc && (
+            <>
+              <div style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)", textTransform: "uppercase", marginBottom: 6 }}>
+                {currentSc.code}
+              </div>
+              <h1 style={{
+                margin: 0, fontFamily: "var(--serif)", fontWeight: 500,
+                fontSize: isMobile ? "clamp(28px, 8vw, 42px)" : 48,
+                letterSpacing: -1, lineHeight: 1, marginBottom: 14,
+              }}>
+                {pick(currentSc.title, lang)}
+              </h1>
+              <p style={{ fontFamily: "var(--serif)", fontSize: isMobile ? 15 : 17, lineHeight: 1.5, color: "var(--ink-2)", maxWidth: 720, marginBottom: 20 }}>
+                {pick(currentSc.body, lang)}
+              </p>
+              <div style={{ display: "grid", gap: 1, background: "var(--ink-3)", maxWidth: 880, gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", border: "1px solid var(--ink-3)" }}>
+                {currentSc.decisions.map((d, i) => {
+                  const isPicked = myPicked === d.id;
+                  const dim = myPicked && !isPicked;
+                  return (
+                    <button
+                      key={d.id}
+                      onClick={() => pickOption(d.id, d.weights)}
+                      disabled={!!myPicked || seconds === 0 || busy}
+                      style={{
+                        background: isPicked ? "var(--paper)" : "var(--ink)",
+                        color: isPicked ? "var(--ink)" : "var(--paper)",
+                        opacity: dim ? 0.45 : 1,
+                        padding: isMobile ? "18px 18px" : "22px 24px",
+                        textAlign: "left", display: "flex", flexDirection: "column",
+                        cursor: myPicked || seconds === 0 ? "default" : "pointer",
+                        transition: "all 220ms ease",
+                        minHeight: isMobile ? 160 : 180,
+                      }}
+                    >
+                      <span style={{ fontFamily: "var(--serif)", fontStyle: "italic", fontSize: 32, fontWeight: 400, lineHeight: 0.9, marginBottom: 10 }}>
+                        {String.fromCharCode(945 + i)}
+                      </span>
+                      <span style={{ fontFamily: "var(--serif)", fontSize: 17, fontWeight: 500, lineHeight: 1.15 }}>
+                        {pick(d.title, lang)}
+                      </span>
+                      <span style={{ fontFamily: "var(--sans)", fontSize: 12, lineHeight: 1.5, opacity: 0.78, marginTop: 8 }}>
+                        {pick(d.sub, lang)}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </>
+          )}
+
+          {/* Status row: answered count, error, advance */}
+          <div style={{
+            marginTop: 20, padding: isMobile ? "12px 14px" : "14px 18px",
+            border: "1px solid var(--rule)", background: "var(--paper-2)",
+            display: "flex", justifyContent: "space-between", alignItems: "center", gap: 14, flexWrap: "wrap",
+            maxWidth: 800,
+          }}>
+            <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)" }}>
+              {myPicked ? t("live.q.youAnswered", lang) : (seconds === 0 ? t("live.q.timeUp", lang) : "")}
+              {(answeredCount > 0 && totalPlayers > 0) ? ` · ${t("live.q.answered", lang, { n: answeredCount, total: totalPlayers })}` : ""}
+            </span>
+            {errKey && (
+              <span style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--warning)" }}>
+                {t(`live.error.${errKey}`, lang) === `live.error.${errKey}` ? errKey : t(`live.error.${errKey}`, lang)}
+              </span>
+            )}
+            {room.is_host && (
+              <PillButton small onClick={advance} disabled={busy}>{t("live.q.hostAdvance", lang)}</PillButton>
+            )}
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  // ── LOBBY (host or player) ──
+  const players = room.players || [];
+  return (
+    <div style={{ background: "var(--paper)", minHeight: "100%", display: "flex", flexDirection: "column" }}>
+      <TopFrame
+        isMobile={isMobile} lang={lang} setLang={setLang}
+        session={session} onLogin={onLogin} onLogout={onLogout}
+        left={
+          <>
+            <button onClick={onExit} style={{ fontFamily: "var(--sans)", fontSize: 11, letterSpacing: 2, textTransform: "uppercase" }}>{t("live.entry.back", lang)}</button>
+            <Rule vertical style={{ height: 18 }} />
+            <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)" }}>{t("live.entry.section", lang)}</span>
+          </>
+        }
+        center={t("live.entry.section", lang)}
+        right={
+          room.is_host ? (
+            <button onClick={endNow} style={{ fontFamily: "var(--sans)", fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: "var(--silver-2)" }}>{t("live.host.abort", lang)}</button>
+          ) : null
+        }
+      />
+      <main style={{
+        flex: 1,
+        display: "grid",
+        gridTemplateColumns: isMobile ? "1fr" : "1.2fr 1fr",
+        overflow: isMobile ? "visible" : "hidden",
+      }}>
+        <section style={{ padding: isMobile ? "26px 22px" : "44px 56px", overflow: isMobile ? "visible" : "auto", display: "flex", flexDirection: "column" }}>
+          {room.is_host ? (
+            <>
+              <div style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 3, color: "var(--silver-2)", marginBottom: 8 }}>
+                {t("live.host.shareHeading", lang)}
+              </div>
+              <h1 style={{
+                margin: 0, fontFamily: "var(--serif)", fontWeight: 500,
+                fontSize: isMobile ? "clamp(72px, 22vw, 130px)" : "clamp(120px, 14vw, 180px)",
+                letterSpacing: isMobile ? "0.12em" : "0.15em", lineHeight: 0.92,
+                color: "var(--ink)",
+              }}>
+                {room.code}
+              </h1>
+              <div style={{ marginTop: 14, display: "flex", alignItems: "center", gap: 12 }}>
+                <CopyCodeButton code={room.code} lang={lang} />
+              </div>
+              <p style={{ marginTop: 18, fontFamily: "var(--sans)", fontSize: 13, color: "var(--ink-2)", lineHeight: 1.5, maxWidth: 540 }}>
+                {t("live.host.shareBlurb", lang)}
+              </p>
+
+              <div style={{ marginTop: "auto", paddingTop: 28, display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}>
+                <PillButton onClick={startSession} disabled={busy || players.length < 2}>
+                  {busy ? t("live.host.starting", lang) : t("live.host.startCta", lang)}
+                </PillButton>
+                {players.length < 2 && (
+                  <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)" }}>
+                    {t("live.host.startWaiting", lang)}
+                  </span>
+                )}
+              </div>
+              {errKey && (
+                <div style={{ marginTop: 16, fontFamily: "var(--mono)", fontSize: 11, color: "var(--warning)" }}>
+                  {t(`live.error.${errKey}`, lang) === `live.error.${errKey}` ? errKey : t(`live.error.${errKey}`, lang)}
+                </div>
+              )}
+            </>
+          ) : (
+            <>
+              <div style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 3, color: "var(--silver-2)", marginBottom: 8 }}>
+                {t("live.entry.section", lang)} · {room.code}
+              </div>
+              <h1 style={{
+                margin: 0, fontFamily: "var(--serif)", fontWeight: 500,
+                fontSize: isMobile ? "clamp(40px, 11vw, 64px)" : 78,
+                letterSpacing: -1.5, lineHeight: 0.95,
+              }}>
+                {t("live.player.lobbyTitle", lang)}
+              </h1>
+              <p style={{ marginTop: 22, fontFamily: "var(--serif)", fontStyle: "italic", fontSize: 18, color: "var(--ink-2)", maxWidth: 540 }}>
+                {t("live.player.waiting", lang)}
+              </p>
+            </>
+          )}
+        </section>
+        <section style={{
+          background: "var(--paper-2)",
+          borderLeft: isMobile ? "none" : "1px solid var(--rule)",
+          borderTop: isMobile ? "1px solid var(--rule)" : "none",
+          padding: isMobile ? "26px 22px" : "44px 36px",
+          overflow: isMobile ? "visible" : "auto",
+        }}>
+          <div style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)", marginBottom: 14 }}>
+            {t("live.host.playersHeading", lang, { n: players.length })}
+          </div>
+          <div style={{ display: "grid", gap: 10 }}>
+            {players.map(p => (
+              <div key={p.user_id} style={{ display: "grid", gridTemplateColumns: "32px 1fr auto", gap: 10, alignItems: "center", padding: "10px 12px", border: "1px solid var(--rule)", background: "var(--paper)" }}>
+                <div style={{ width: 28, height: 28, background: "var(--ink)", color: "var(--paper)", display: "grid", placeItems: "center", fontFamily: "var(--serif)", fontSize: 12, fontWeight: 500 }}>
+                  {(p.display_name || "?").split(/\s+/).map(s => s[0]).slice(0, 2).join("").toUpperCase()}
+                </div>
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ fontFamily: "var(--serif)", fontSize: 16, fontWeight: 500, letterSpacing: -0.2, lineHeight: 1.1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                    {p.display_name}
+                  </div>
+                  {p.course && <div style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--silver-2)" }}>{p.course}</div>}
+                </div>
+                {p.is_host && <span style={{ fontFamily: "var(--mono)", fontSize: 9, letterSpacing: 2, padding: "2px 6px", border: "1px solid var(--ink)" }}>HOST</span>}
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}
+
+function CopyCodeButton({ code, lang }) {
+  const [copied, setCopied] = useState(false);
+  return (
+    <button
+      onClick={() => {
+        try { navigator.clipboard.writeText(code); setCopied(true); setTimeout(() => setCopied(false), 1800); } catch (e) {}
+      }}
+      style={{
+        padding: "8px 14px", border: "1px solid var(--ink)",
+        fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, textTransform: "uppercase",
+        background: copied ? "var(--ink)" : "transparent",
+        color: copied ? "var(--paper)" : "var(--ink)",
+        cursor: "pointer",
+        transition: "background 200ms ease, color 200ms ease",
+      }}
+    >
+      {copied ? t("live.host.codeCopied", lang) : t("live.host.copyCode", lang)}
+    </button>
+  );
+}
 
 function ProtoNav({ screen, go, isMobile, lang, session }) {
   const items = [
@@ -3740,7 +4817,7 @@ function ProtoNav({ screen, go, isMobile, lang, session }) {
   );
 }
 
-const PROTECTED_SCREENS = new Set(["menu", "game", "scenario", "results", "leader"]);
+const PROTECTED_SCREENS = new Set(["menu", "game", "scenario", "results", "leader", "live-entry", "live-join", "live-session"]);
 
 const INITIAL_SCORES = { esg: 64, reputation: 72, transparency: 58, risk: 36, influence: 0 };
 
@@ -3755,6 +4832,10 @@ function App() {
   const [session, setSession] = useState(() => Auth.load());
   const [showAuth, setShowAuth] = useState(false);
   const [pendingNav, setPendingNav] = useState(null);
+  // Live mode state
+  const [liveRoom, setLiveRoom] = useState(null);
+  const [liveBusy, setLiveBusy] = useState(false);
+  const [liveJoinErr, setLiveJoinErr] = useState(null);
 
   const vp = useViewport();
 
@@ -3812,6 +4893,32 @@ function App() {
     setShowTakeover(false);
   };
 
+  // ─── Live mode handlers ───
+  const onLiveCreate = async () => {
+    if (liveBusy || !session) return;
+    setLiveBusy(true); setLiveJoinErr(null);
+    const questionSet = buildLiveQuestionSet();
+    const res = await Live.createRoom(session.token, lang, questionSet);
+    setLiveBusy(false);
+    if (res.error) { setLiveJoinErr(res.error); return; }
+    setLiveRoom(res.room);
+    setScreen("live-session");
+  };
+  const onLiveJoin = async (code) => {
+    if (liveBusy || !session) return;
+    setLiveBusy(true); setLiveJoinErr(null);
+    const res = await Live.joinRoom(session.token, code);
+    setLiveBusy(false);
+    if (res.error) { setLiveJoinErr(res.error); return; }
+    setLiveRoom(res.room);
+    setScreen("live-session");
+  };
+  const onLiveExit = () => {
+    setLiveRoom(null);
+    setLiveJoinErr(null);
+    setScreen("menu");
+  };
+
   useEffect(() => {
     const onKey = (e) => {
       if (e.target && /input|textarea/i.test(e.target.tagName)) return;
@@ -3860,6 +4967,15 @@ function App() {
         {screen === "scenario" && <Scenario {...screenProps} scores={scores} setScores={setScores} />}
         {screen === "results"  && <Results  {...screenProps} scores={scores} identity={identity} accuracy={accuracy} />}
         {screen === "leader"   && <Leaderboard {...screenProps} />}
+        {screen === "live-entry" && (
+          <LiveEntry {...screenProps} creating={liveBusy} onCreate={onLiveCreate} onJoin={() => { setLiveJoinErr(null); setScreen("live-join"); }} />
+        )}
+        {screen === "live-join" && (
+          <LiveJoin {...screenProps} busy={liveBusy} errKey={liveJoinErr} onSubmit={onLiveJoin} />
+        )}
+        {screen === "live-session" && liveRoom && (
+          <LiveSession {...screenProps} initialRoom={liveRoom} onExit={onLiveExit} />
+        )}
       </div>
 
       <ProtoNav screen={screen} go={go} isMobile={vp.isMobile} lang={lang} session={session} />
