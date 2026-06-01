@@ -3888,10 +3888,15 @@ function useCountdown(endsAtIso) {
   return seconds;
 }
 
-// Subscribes to the room's broadcast channel. Returns { room, setRoom, broadcast, refresh }.
-function useLiveRoom(initialRoom, sessionToken) {
+// Subscribes to the room's broadcast channel. Returns { room, setRoom, broadcast, refresh, ready }.
+// When `selfPlayer` is provided and the player is NOT the host, announces
+// arrival via a PLAYER_JOINED broadcast as soon as the channel reaches
+// SUBSCRIBED state — this is how the host's UI learns about new joiners.
+function useLiveRoom(initialRoom, sessionToken, selfPlayer) {
   const [room, setRoom] = useState(initialRoom);
+  const [ready, setReady] = useState(false);
   const channelRef = useRef(null);
+  const refreshTimerRef = useRef(null);
 
   // Keep state in sync if parent passes a fresh initialRoom (after refresh)
   useEffect(() => {
@@ -3900,8 +3905,16 @@ function useLiveRoom(initialRoom, sessionToken) {
     }
   }, [initialRoom && initialRoom.room_id]);
 
+  // Lightweight refresh helper (defined here so the effect below can call it)
+  const refresh = useCallback(async () => {
+    if (!room || !room.code || !sessionToken) return;
+    const res = await Live.getRoomState(sessionToken, room.code);
+    if (res.ok) setRoom(res.room);
+  }, [room && room.code, sessionToken]);
+
   useEffect(() => {
     if (!SB || !room || !room.room_id) return;
+    setReady(false);
     const channel = SB.channel(`room:${room.room_id}`, { config: { broadcast: { self: false } } });
     channel.on("broadcast", { event: "message" }, ({ payload }) => {
       if (!payload || !payload.type) return;
@@ -3929,28 +3942,48 @@ function useLiveRoom(initialRoom, sessionToken) {
         }
       });
     });
-    channel.subscribe();
+    channel.subscribe((status) => {
+      if (status === "SUBSCRIBED") {
+        setReady(true);
+        // Announce arrival so the host (and any earlier players) update their list.
+        // The host doesn't need to announce themselves — they're already in the
+        // initial state from create_room.
+        if (selfPlayer && !selfPlayer.is_host) {
+          try {
+            channel.send({
+              type: "broadcast",
+              event: "message",
+              payload: { type: "PLAYER_JOINED", player: selfPlayer },
+            });
+          } catch (e) {}
+        }
+      }
+    });
     channelRef.current = channel;
+
+    // Safety net: if the host is in lobby and the broadcast was dropped (or
+    // a player arrived during a brief disconnect), refresh the player list
+    // every 6s while waiting in the lobby. Stops the moment the game starts.
+    if (selfPlayer && selfPlayer.is_host && room.status === "lobby") {
+      refreshTimerRef.current = setInterval(() => { refresh(); }, 6000);
+    }
+
     return () => {
+      if (refreshTimerRef.current) { clearInterval(refreshTimerRef.current); refreshTimerRef.current = null; }
       if (channelRef.current) {
         try { SB.removeChannel(channelRef.current); } catch (e) {}
         channelRef.current = null;
       }
+      setReady(false);
     };
-  }, [room && room.room_id]);
+  }, [room && room.room_id, room && room.status, selfPlayer && selfPlayer.is_host]);
 
   const broadcast = useCallback((payload) => {
     if (!channelRef.current) return;
     try { channelRef.current.send({ type: "broadcast", event: "message", payload }); } catch (e) {}
   }, []);
 
-  const refresh = useCallback(async () => {
-    if (!room || !room.code || !sessionToken) return;
-    const res = await Live.getRoomState(sessionToken, room.code);
-    if (res.ok) setRoom(res.room);
-  }, [room && room.code, sessionToken]);
-
-  return { room, setRoom, broadcast, refresh };
+  return { room, setRoom, broadcast, refresh, ready };
 }
 
 // Build the question_set for a new room — mixes trivia (25s) with short scenarios (60s),
@@ -4157,7 +4190,20 @@ function LiveJoin({ go, isMobile, lang, setLang, session, onLogin, onLogout, onS
 // ───────── LiveSession — the active room (lobby → playing → ended) ─────────
 
 function LiveSession({ go, isMobile, isTablet, lang, setLang, session, onLogin, onLogout, initialRoom, onExit }) {
-  const { room, broadcast, refresh } = useLiveRoom(initialRoom, session && session.token);
+  // Self-player payload broadcast on subscribe so the host learns about new joiners.
+  const selfPlayer = useMemo(() => {
+    if (!session || !session.user || !initialRoom) return null;
+    return {
+      user_id:      session.user.id,
+      display_name: session.user.full_name,
+      course:       session.user.course,
+      is_host:      !!initialRoom.is_host,
+      total_answers: 0,
+      profile:      EMPTY_PROFILE(),
+    };
+  }, [session && session.user && session.user.id, initialRoom && initialRoom.is_host]);
+
+  const { room, broadcast, refresh, ready } = useLiveRoom(initialRoom, session && session.token, selfPlayer);
 
   // Personal profile accumulated locally as the user picks
   const [myProfile, setMyProfile] = useState(EMPTY_PROFILE());
