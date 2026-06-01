@@ -4562,6 +4562,10 @@ function LiveSession({ go, isMobile, isTablet, lang, setLang, session, onLogin, 
     const players = room.players || [];
     const totalPlayers = players.length;
     const answeredCount = (room._ack && room._ack.question_idx === room.current_q) ? room._ack.answered_count : (myPicked ? 1 : 0);
+    // Host can only advance when EVERYONE has answered, or when the timer has run out.
+    const allAnswered = totalPlayers > 0 && answeredCount >= totalPlayers;
+    const timeUp = !!(room.question_ends_at && seconds === 0);
+    const canAdvance = allAnswered || timeUp;
     return (
       <div style={{ background: "var(--paper)", minHeight: "100%", display: "flex", flexDirection: "column" }}>
         <TopFrame
@@ -4720,7 +4724,7 @@ function LiveSession({ go, isMobile, isTablet, lang, setLang, session, onLogin, 
               </span>
             )}
             {room.is_host && (
-              <PillButton small onClick={advance} disabled={busy}>{t("live.q.hostAdvance", lang)}</PillButton>
+              <PillButton small onClick={advance} disabled={busy || !canAdvance}>{t("live.q.hostAdvance", lang)}</PillButton>
             )}
           </div>
         </main>
