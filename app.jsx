@@ -431,6 +431,8 @@ const STRINGS = {
   "live.error.already_started":{ en: "The session has already started.",                   pt: "A sessão já começou." },
   "live.error.time_up":        { en: "Time's up for this question.",                       pt: "Tempo esgotado para esta questão." },
   "live.error.wrong_question": { en: "The room moved on. Catching up…",                    pt: "A sala avançou. Sincronizando…" },
+  "live.q.advancingSoon":      { en: "Advancing in a moment…",                              pt: "Avançando em instantes…" },
+  "live.q.allAnswered":        { en: "All answered.",                                       pt: "Todos responderam." },
 };
 
 const t = (key, lang, vars) => {
@@ -4203,7 +4205,11 @@ function LiveSession({ go, isMobile, isTablet, lang, setLang, session, onLogin, 
     };
   }, [session && session.user && session.user.id, initialRoom && initialRoom.is_host]);
 
-  const { room, broadcast, refresh, ready } = useLiveRoom(initialRoom, session && session.token, selfPlayer);
+  const { room, setRoom, broadcast, refresh, ready } = useLiveRoom(initialRoom, session && session.token, selfPlayer);
+
+  // Guard so the host doesn't auto-advance twice for the same question.
+  // Holds { qIdx, type: "all" | "time" | null }.
+  const autoFireRef = useRef({ qIdx: -1, type: null });
 
   // Personal profile accumulated locally as the user picks
   const [myProfile, setMyProfile] = useState(EMPTY_PROFILE());
@@ -4299,11 +4305,45 @@ function LiveSession({ go, isMobile, isTablet, lang, setLang, session, onLogin, 
       }
       return;
     }
-    // Broadcast the ack so host's "X / N" updates
+    // Sync _ack locally too — broadcast uses self:false so we don't see our own
+    // PLAYER_ANSWERED, but the auto-advance logic needs to count us in.
+    const ackPayload = {
+      question_idx: room.current_q,
+      answered_count: res.state.answered_count,
+      total_players: res.state.total_players,
+    };
+    setRoom(prev => prev ? ({ ...prev, _ack: ackPayload }) : prev);
+    // Broadcast the ack so host's "X / N" updates on other clients
     broadcast({ type: "PLAYER_ANSWERED",
       user_id: session.user.id, question_idx: room.current_q,
       answered_count: res.state.answered_count, total_players: res.state.total_players });
   }
+
+  // ── Host: auto-advance when all answered (2s grace) or when timer hits 0 ──
+  useEffect(() => {
+    if (!room || !room.is_host || room.status !== "playing") return;
+    // Reset the guard when question changes
+    if (autoFireRef.current.qIdx !== room.current_q) {
+      autoFireRef.current = { qIdx: room.current_q, type: null };
+    }
+    if (autoFireRef.current.type) return;  // already armed/fired for this question
+    const totalPlayers = (room.players || []).length;
+    const ack = room._ack;
+    const ackCount = (ack && ack.question_idx === room.current_q) ? ack.answered_count : 0;
+    const allAnswered = totalPlayers > 0 && ackCount >= totalPlayers;
+    const timeUp = (room.question_ends_at && seconds === 0);
+    if (allAnswered) {
+      autoFireRef.current = { qIdx: room.current_q, type: "all" };
+      const t = setTimeout(() => {
+        if (autoFireRef.current.qIdx === room.current_q) advance();
+      }, 2000);
+      return () => clearTimeout(t);
+    } else if (timeUp) {
+      autoFireRef.current = { qIdx: room.current_q, type: "time" };
+      advance();
+    }
+    // eslint-disable-next-line
+  }, [room && room._ack && room._ack.answered_count, room && room.current_q, room && room.status, seconds]);
 
   // ── Current event lookup (question or scenario) ──
   const currentEvent = room.current_q >= 0 && room.question_set ? room.question_set[room.current_q] : null;
@@ -4666,9 +4706,13 @@ function LiveSession({ go, isMobile, isTablet, lang, setLang, session, onLogin, 
             display: "flex", justifyContent: "space-between", alignItems: "center", gap: 14, flexWrap: "wrap",
             maxWidth: 800,
           }}>
-            <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: "var(--silver-2)" }}>
-              {myPicked ? t("live.q.youAnswered", lang) : (seconds === 0 ? t("live.q.timeUp", lang) : "")}
-              {(answeredCount > 0 && totalPlayers > 0) ? ` · ${t("live.q.answered", lang, { n: answeredCount, total: totalPlayers })}` : ""}
+            <span style={{ fontFamily: "var(--mono)", fontSize: 10, letterSpacing: 2, color: (totalPlayers > 0 && answeredCount >= totalPlayers) ? "var(--positive)" : "var(--silver-2)" }}>
+              {(totalPlayers > 0 && answeredCount >= totalPlayers)
+                ? `✓ ${t("live.q.allAnswered", lang)} · ${t("live.q.advancingSoon", lang)}`
+                : (myPicked ? t("live.q.youAnswered", lang) : (seconds === 0 ? t("live.q.timeUp", lang) : ""))}
+              {(totalPlayers > 0 && !(answeredCount >= totalPlayers))
+                ? ` · ${t("live.q.answered", lang, { n: answeredCount, total: totalPlayers })}`
+                : ""}
             </span>
             {errKey && (
               <span style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--warning)" }}>
