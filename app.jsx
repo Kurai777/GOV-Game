@@ -4271,8 +4271,9 @@ function LiveSession({ go, isMobile, isTablet, lang, setLang, session, onLogin, 
     if (res.error) { setErrKey(res.error); return; }
     if (res.state.status === "ended") {
       broadcast({ type: "GAME_ENDED", final_ranking: res.state.final_ranking });
-      // Local
-      refresh();
+      // Host doesn't receive its own broadcast (self:false), and get_room_state
+      // doesn't return final_ranking — so set it locally instead of refresh().
+      setRoom(prev => prev ? ({ ...prev, status: "ended", final_ranking: res.state.final_ranking }) : prev);
     } else {
       broadcast({ type: "QUESTION_STARTED", question_idx: res.state.current_q, ends_at_iso: res.state.question_ends_at });
       refresh();
@@ -4388,7 +4389,15 @@ function LiveSession({ go, isMobile, isTablet, lang, setLang, session, onLogin, 
 
   // ── ENDED (results) ──
   if (room.status === "ended") {
-    const ranking = room.final_ranking || [];
+    // Governance score = good schools (steward + stakeholder + monitor + connector)
+    // minus the opportunistic agent. Ranks "best governance profile" the market wants.
+    const govScore = (p) => {
+      p = p || {};
+      return ((p.steward || 0) + (p.stakeholder || 0) + (p.monitor || 0) + (p.connector || 0)) - (p.agent || 0);
+    };
+    const ranking = [...(room.final_ranking || [])]
+      .map(r => ({ ...r, gov_score: govScore(r.profile) }))
+      .sort((a, b) => b.gov_score - a.gov_score);
     const me = ranking.find(r => r.user_id === (session && session.user && session.user.id));
     const myFinalProfile = (me && me.profile) || myProfile;
     const entries = ARCHETYPES.map(a => [a, (myFinalProfile && myFinalProfile[a]) || 0]).sort((x, y) => y[1] - x[1]);
@@ -4499,7 +4508,7 @@ function LiveSession({ go, isMobile, isTablet, lang, setLang, session, onLogin, 
                       {r.course && <div style={{ fontFamily: "var(--mono)", fontSize: 10, color: isMe ? "var(--silver)" : "var(--silver-2)", marginTop: 2 }}>{r.course}</div>}
                     </div>
                     <span style={{ fontFamily: "var(--mono)", fontSize: 13, fontWeight: 500, textAlign: "right" }}>
-                      {r.magnitude || 0}
+                      {r.gov_score > 0 ? "+" : ""}{r.gov_score || 0}
                     </span>
                   </div>
                 );
